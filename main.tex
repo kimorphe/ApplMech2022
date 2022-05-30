@@ -1,0 +1,254 @@
+﻿%%#!platex
+%
+% Example of Japanese Paper of JSCE
+% for LaTeX2e users
+%
+% revised on 4/25/2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% もし jis フォントメトリックを使う場合は，以下をアンコメントしてください．
+% \DeclareFontShape{JY1}{mc}{m}{n}{<-> s * jis}{}
+% \DeclareFontShape{JY1}{gt}{m}{n}{<-> s * jisg}{}
+%
+\documentclass{jsce}
+%
+\usepackage{epic,eepic,eepicsup}
+%\usepackage{graphicx,multicol}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{setspace}
+%  amsを使う方は以下をアンコメントしてください．
+%\usepackage{amssymb,amsmath}
+% 英語はサポートしているかどうか不明
+% \inenglish
+% 学会サンプルに times とあるので指定しておきます
+\usepackage{times}
+%
+\finalversion
+\pagestyle{empty}
+%
+\title{
+	花崗岩の造岩鉱物粒スケールでみた\\
+	弾性波伝播特性
+}%
+\endtitle{
+ELASTIC WAVE PROPAGATION IN A GRANITE AT A SCALE OF ROCK FORMING MINERAL GRAINS
+}
+%
+% emailアドレスのフォントをタイプライター体にしたい方は次行をアンコメント
+% \emailstyle{\ttfamily}
+% emailアドレスを公開される方は，
+%% \thanks{○○○○○○\email{your_name@foo.ac.jp}}のようにしてください．
+%
+\author{木本　和志\thanks{正会員 博士(工学) 
+岡山大学 学術研究院環境生命科学学域
+(〒700-8530 岡山県岡山市北区3丁目1番地1号)\email{kimoto@okayama-u.ac.jp} (Corresponding Author)}・
+岡野　蒼\thanks{学生会員 岡山大学環境生命科学研究科 (〒700-8530 岡山県岡山市北区3丁目1番地1号)}・
+斎藤　隆泰\thanks{正会員 博士(工学)群馬大学大学院理工学府 環境創生部門(〒376-8515 群馬県桐生市天神町 1-5-1)}
+%佐藤　忠信\thanks{正会員 博士(工学)神戸学院大学・現代社会学部・防災社会学科(〒650-8586神戸市中央区港島1-1-3)}・
+%松井　裕哉\thanks{正会員 修士(工学)日本原子力研究開発機構・幌延深地層研究センター・堆積岩処分技術開発Gr
+%(〒098-3224 北海道天塩郡幌延町北進432番地2)}
+}
+\endauthor{Kazushi KIMOTO, Aoi OKANO, Takahiro SAITOH
+%\\ Tadanobu SATO and Hiroya MATSUI 
+}
+%
+\abstract{
+\small
+本研究は，花崗岩における縦波の局所的な伝播挙動を調べたものである．具体的には，造岩鉱物粒スケールでの位相速度を推定することを目的に，花崗岩供試体の板厚方向に透過する縦波をレーザードップラー振動計で計測した．位相速度の評価は別途取得した参照波形と透過波形の位相差に基づいて行い，得られた位相速度を造岩鉱物種毎に統計的に処理して頻度分布を求めた．その結果，カリ長石の位相速度は非対称かつ幅の広い分布に従う一方，石英の位相速度は対称かつより狭い分布に従うことが分かった．さらに，以上で得た頻度分布を用いて花崗岩の2次元数値解析モデルを作成して平面波伝播解析を行ったところ，ガウス分布によって摂動された位相速度分布を与えた解析モデルとは異なる，特異な散乱減衰の挙動が現れることが示された．
+}
+%
+\keywords{granite, rock-forming mineral, ultrasonic wave, phase velocity, probability density}
+%
+\endabstract{% Yes blank line
+\normalsize
+This study investigates the propagation characteristics of P-wave in granite. Specifically, the local phase velocity is evaluated experimentally using a granite plate. In the experiment, ultrasonic P-waves transmitted in the thickness direction are measured by scanning the plate surface with a laser Doppler vibrometer. The phase velocity is evaluated based on the phase delay relative to an independently measured reference signal. The phase velocity data obtained thus are processed statistically to produce probability density functions (PDF) for each rock-forming mineral species. As a result, a highly asymmetric and broad PDF is obtained for the P-wave velocity of potassium feldspar, while the PDF for quartz is found to be symmetric and much narrower. Finally, the PDFs are used to generate 2-dimensional numerical models of granite on which plane wave propagation analyses are performed. The numerical results showed that the phase velocity field perturbed according to the experimentally obtained PDFs gives a peculiar decay profile compared to the Gaussian perturbed models.
+}
+%
+% \titlepagecontrol{1}
+%
+%\receivedate{2019．7．19}
+% \receivedate{January 15， 1991}
+%
+% \def\theenumi{\alph{enumi}}  % もし enumerate 最初の箇条を (a) と
+% \def\labelenumi{(\theenumi)} % したい場合・・・
+%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{はじめに}
+	\input{1_intro}
+\section{超音波計測実験}
+%	\input{2_measurement}
+\section{計測結果}
+%	\input{3_data}
+\section{位相速度}
+%	\input{4_processing}
+\section{非均質媒体モデルによる波動伝播解析}
+%	\input{5_fdm}
+\section{まとめ}
+本研究では，花崗岩の鉱物粒スケールにおける縦波位相速度を，局所的な超音波計測よって推定した．
+その結果，実験に用いた花崗岩供試体の主要造岩鉱物である，石英，斜長石，カリ長石の
+それぞれについて，位相速度の頻度分布を得た．これらの頻度分布の平均値は鉱物種による差が小さく，
+いずれも5.4km/s程度と典型的な花崗岩の位相速度に近い値をとり，周波数1MHzから2MHz程度の帯域
+ではほとんど速度分散も無いことが分かった．一方，頻度分布の形状や分布幅は鉱物種によって大きく異なり，
+次のような特徴があることが明らかとなった．
+\begin{itemize}
+\item
+石英の位相速度は，平均値周辺に集中した対称な頻度分布を持つ．
+\item
+カリ長石の位相速度は，標準偏差が0.9km/sと大きく非対称な頻度分布を持つ. 
+\item
+斜長石の位相速度は，複数のピークをもつ頻度分布を描き，分布幅は
+石英とカリ長石の中間程度の値となる．
+\end{itemize}
+以上の結果を，文献に与えられた単結晶鉱物の弾性係数から計算した位相速度と比較する
+ことで，花崗岩中の鉱物粒はマイクロクラックの影響により，位相速度がき裂の無い単結晶
+に比べて明らかに小さな値を取ることを確認した．一方，分布幅に関して言えば，
+単結晶に比べて花崗岩中の石英は頻度分布の分散が小さく，き裂の存在が異方性を
+弱める方向に寄与している可能性があることが分かった．さらに，カリ長石は，単結晶
+同様，位相速度の頻度分布幅が広く，き裂の存在下でも強い異方性を示すことを明らか
+にすることができた．最後に，これら鉱物種に応じた位相速度の頻度分布を考慮して
+波動伝播解析を行ったところ，位相速度が単一のガウス分布に従うと仮定した
+場合とは異なる散乱減衰挙動が見られることが分かった．
+このことは，花崗岩のような複数の鉱物から構成される非均質媒体を伝わる弾性波の
+挙動を詳しく調べるためには，構成鉱物毎に位相速度あるいは弾性係数が従う確率分布を
+与えた解析が必要となることを示していると考えられる．
+%逆に言えば，花崗岩中を伝播する弾性波
+%は鉱物組成に反応すると言え，両者の詳しい関係を知ることができれば，弾性波計測結果から
+%粒径分布やき裂の量を推定する非破壊検査法として利用できる可能性がある．
+%こういった利用方法を
+今後は，供試体の劣化や石目方向による位相速度分布の変化を実験的に調べることや，
+横波についても同様な計測と位相速度分布の推定を行うことが課題となる．
+また，波動伝播挙動のどのような側面に位相速度の確率分布の特徴が反映されるかを，
+数値シミュレーションによって特定することも重要な課題の一つとなる．
+以上のことに加え，き裂や結晶粒のサイズと方位の分布を考慮したモデルから位相速度
+を求め実測値と比較することで，位相速度分布からき裂に関する情報を得ることが可能
+になると考えられる.本研究はそのような取り組みの一環として位置付けられる.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+
+{\gt 謝辞:}
+本実験に用いた花崗岩供試体は浮田石材店代表浮田隆司氏に提供頂いた．
+また本研究の推進には，科学研究費補助金(基盤研究©課題番号\#18K04334)の補助を受けた．
+併せて謝意を表す．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+%\lastpagecontrol[2cm]{13.7cm}
+\begin{thebibliography}{99}
+\begin{spacing}{1.175}
+\bibitem{Kudo1}
+	工藤洋三, 橋本堅一, 佐野修, 中川浩二: 花崗岩の力学的異方性と岩石組織欠陥の分布,
+	土木学会論文集, 第370号/III-5, pp.189-197, 1986.
+\bibitem{Kudo1991}
+	工藤洋三, 橋本堅一, 佐野修, 中川浩二: 花崗岩内に発生するクラックと鉱物粒の関係,
+	資源・素材学会誌, 第107巻,第7号, pp.423-427, 1991.
+\bibitem{Chin}
+	陳友晴，西山孝，喜多浩之，佐藤稔紀: 微小クラックの分類による稲田花崗岩と栗橋花崗閃緑岩の力学的弱面について，
+	応用地質，第38巻，第4号，pp.196-204，1997.
+\bibitem{Takagi}
+	高木秀雄, 三輪成徳, 横溝佳侑, 西嶋圭, 円城寺守, 水野崇, 天野健治:土岐花崗岩中の石英に発達するマイクロクラックの三次元
+	方位分布による古応力場の復元と生成環境, 地質学雑誌, 第114巻, 第7号, pp.321-335, 2008.
+\bibitem{Griffiths}
+	Griffiths, L., Lengline, O., Heap, M.,J., Baud, P., and Schmittbuhl, J.: Thermal cracking in Westerly granite monitored
+	using direct wave velocity, coda wave interferometry and acoustic emissions, {\it JGR Solid Earth}, Vol.123, No.3, pp.2246-2261, 2018.
+\bibitem{Sato}
+	Sato, H., Fehler, M.C., and Maeda, T.:Seismic wave propagation and scattering in the heterogeneous earth, 
+	Springer, 2012.
+\bibitem{FEM}
+	Pamel, A., V., Sha, G., Rokhlin, S., I., and Lowe, M., J., S.:
+	Finite-element modelling of elastic wave propagation and scattering within heterogeneous media, 
+	{\it Proc. R. Soc. A}, 473:20160738.
+\bibitem{AGU}
+	Anderson, O., L., Schreiber, E., Liebermann, R., C., and Soga, H.: 
+	Some elastic constant data on minerals relevant to geophysics, 
+	{\it Review of Geophysics}, Vol.4, No.4, pp.491-524, 1968.
+\bibitem{Kawamura}
+	河村雄行: 分子シミュレーション鉱物学のすすめ，
+	鉱物学雑誌，第28巻，第4号，pp.151-158，1999．
+%\bibitem{Bass}
+%	Bass, J., D.: Elasticity of minerals, glasses, and melts, 
+%	{\im Mineral Physics and Crystallography:A handbook of physical constants }, Vol.2,pp.45-63,  
+\bibitem{Pamel}
+	Pamel, A., V., Sha, G., Rokhlin, S.,I., and Lowe, M.,J.,S.: 
+	Finite-element modelling of elastic wave propagation and scattering within heterogeneous media, 
+	{\it Proc. R. Soc. A}, 473:2016738, 2016.
+\bibitem{Kudo2}
+	工藤洋三, 橋本堅一, 佐野修, 中川浩二:瀬戸内地方の採石場における花崗岩石の異方性, 
+	土木学会論文集, 第382号/III-7, pp.45-53, 1987.
+%\newpage
+\bibitem{Sano1}
+	佐野修, 工藤洋三, 河嶋智, 水田義明:異方性体としての花崗岩の弾性率に関する実験的研究, 
+	材料, 第37巻, 第418号, pp.84-90, 1987.
+%\bibitem{Sano2}
+%	佐野修, 民部雅史, 平野亮, 工藤洋三, 水田義明:弾性的対称性未知の岩石の弾性定数決定に関する研究, 
+%	材料, 第40巻, 第449号，pp.96-102, 1990.
+%\bibitem{Nishizawa1996}
+%	西澤修, 雷興林, 佐藤隆司:不均質媒体での地震波伝モデル実験-レーザードップラー速度計を用いた波動計測-
+%	, 地震調査所月報, 第47巻, 第４号, pp.209-222, 1996.
+\bibitem{Sivaji}
+	Sivaji, C., Nishizawa, O., Kitagawa, G., and Fukushima, Y.:A physical-model study of the statistics of seismic waveform fluctuation in random heterogeneous media, 
+	{\it Geophys. J. Int.}, Vol.148, pp.575-595, 2002. 
+\bibitem{Fukushima}
+	Fukushima, Y., Nishizawa, O., Sato, H., and Ohtake, M.:Laboratory study on scattering characteristics of shear waves 
+	in rock samples, {\it Bulltine of Seismological Society of America}, Vol.93, No.1, pp.253-263, 2003.
+\bibitem{Muller}
+	Muller, G., Roth, M. and Korn, M.:Seismic-wave traveltimes in random media,
+	{\it Geophys. J. Int.}, Vol.110, pp.29-41, 1992. 
+\bibitem{Korn}
+	Korn, M.:Seismic waves in random media, 
+	{\it Journal of Applied Geophysics}, Vol.29, pp.247-269, 1993.
+\bibitem{Spetzler2001}
+	Spetzler, J. and Snieder, R.:The effect of small-scale heterogeneity on the arrival time of waves, 
+	{\it Geophys. J. Int.}, Vol.145, pp.786-796, 2001. 
+\bibitem{Spetzler}
+	Spetzler, J., Sivaji, C., Nishizawa, O., and Fukushima, Y.:A test of ray theory and scattering theory based on
+	a laboratory experiment using ultrasonic waves and numerical simulation by finite-difference method, 
+	{\it Geophys. J. Int.}, Vol.148, pp.165-178, 2002. 
+\lastpagecontrol[0.0cm]{19.0cm}
+\newpage
+\bibitem{Baig}
+	Baig, A., M., and Dahlen, F., A.: Traveltime biases in random media and S-wave discrepancy, 
+	{\it Geophys. J. Int.}, Vol.1158 pp.992-938, 2004. 
+\bibitem{Kimoto}
+	木本和志，岡野蒼，斎藤隆泰，佐藤忠信，松井裕哉: 超音波計測に基づく花崗岩中の表面波伝播特性に関する研究，
+	土木学会応用力学論文集A2(応用力学)，第76巻，第2号，pp.I\_97-I\_108, 2020.
+\bibitem{Rose}
+	Rose, J. L.: Ultrasonic waves in solid media, Cambridge university press, 1999. 
+%\bibitem{RockPhys}
+%	ゲガーン, Y., パルシアウスカス, V.: 
+%	岩石物性入門, シュプリンガー・ジャパン, 2008. 
+%\bibitem{NishizawaI}
+%	西澤修:岩石中の地震波伝播I:不均質媒体のモデル化と弾性波速度, 地学雑誌, 第114巻, 第6号,  pp.921-948,  2005.
+%\bibitem{Nishizawa2001}
+%	西澤修, 雷興林, チャダラム シバジ:不均質媒質での地震波伝播モデル実験, 
+%	地震, 第54巻, pp.171-183, 2001.
+%\bibitem{Okubo2012}
+%	大久保 慎人, 雑賀 敦, 鈴木 貞臣, 中島 唯貴: 地震動観測による地震波速度と岩石物性試験による弾性波速度の関係
+%	-段発発破波形の相関による地震波速度構造推定-: 地震, 第65巻, pp.21-30, 2012.
+%\bibitem{Rwk_textbook}
+%	Klaffter, J., and Sololov,I.M.,秋元 琢磨(訳): ランダムウォークはじめの一歩，共立出版， 2018．
+\end{spacing}
+\end{thebibliography}
+\begin{flushright}
+	\small
+	\bf{ (Received June 18, 2021)\\
+	(Accepted November 30, 2021)}
+\end{flushright}
+%\newpage
+%\lastpagecontrol[0.0cm]{18.0cm}
+%\lastpagecontrol[0.0cm]{13.0cm}
+\end{document}
+
+%\lastpagesettings
+%\begin{minipage}[c]{13.7cm}
+%\end{minipage}
+%\lastpagecontrol[0cm]{13.7cm}
+%\begin{multicols}{1}
+%-------------------------------------------------
+%-------------------------------------------------
+%\end{multicols}
+
