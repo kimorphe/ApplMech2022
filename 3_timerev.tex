@@ -41,7 +41,7 @@
 	+
 	\delta_{il}\delta_{jk} 
 	)
-	\label{eqn:}
+	\label{eqn:Cijkl_iso}
 \end{equation}
 とすることができる．このとき，縦波および横波の位相速度は，それぞれ，
 \begin{equation}
@@ -316,71 +316,4 @@ $\tau$は実時間$t$と式(\ref{eqn:tau_def})の関係にあるため，{\rm �
 	\includegraphics[clip,scale=0.4]{Figs/SnapNone.eps}
 	\caption{時間反転場の進展状況(スリットがない場合)}
 	\label{fig:snap_none}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\section{RTMイメージング}
-最後に，reverse time migration(RTM)の考え方に基づき，簡単な像合成を行った結果を示す．
-RTMでは入射場と時間反転場の量の相関を取る形で，モデルパラメータのコントラストを
-イメージングする．例えば，速度場を用いる場合，画像関数$I(\fat{x})$を次のようにして
-計算する.
-\begin{equation}
-	I(\fat{x})=\int_T \dot u^{in}_i(\fat{x},t) \dot u_i^{\dagger}(\fat{x},t)dt
-	\label{eqn:Ix}
-\end{equation}
-これは，FWIにおけるFr$\acute{\rm e}$chet kernelの一つである$K_\rho$で
-$u_i=u_i^{in}$とした場合に他ならない．つまり，RTMではFWIにおける勾配を画像化関数，
-すなわち欠陥検出指標として用いているいうことができる．
-(ただし、RTMでは他にも様々な画像化関数が提案されているため，FWIのサブカテゴリー
-という言い方は必ずしも正確ではない．)
-そこで，もう一つのカーネルである$K_{ijkl}(\fat{x})$も用いて,
-二通りの方法で像合成を行ってみる.$K_{ijkl}$は4階のテンソルだが，等方性体の
-弾性係数(\ref{eqn:})を用いれば，
-\begin{equation}
-	\int_G K_{ijkl}C_{ijkl}dv
-	=
-	\int_G \lambda u_{i,i}u^{\dagger}_{j,j} dv
-	+
-	\int_G \mu u_{i,j}u^{\dagger}_{i,j} dv
-	\label{eqn:}
-\end{equation}
-と表すことができる．そこで，
-\begin{equation}
-	K_\lambda:= \int_T u_{i,i}u^{\dagger}_{j,j} dv
-	\label{eqn:}
-\end{equation}
-\begin{equation}
-	K_\mu:= \int_T u_{i,j}u^{\dagger}_{i,j} dv
-	\label{eqn:}
-\end{equation}
-を$u_i=u_i^{in}$としてイメージングを行ってみる．
-そのためには入射場が必要となる．そこで，図\ref{fig:domain}において
-$R'$で示したプレート裏面でLDVで観測した表面振動波形をFDTDモデルの
-速度境界値として与え，領域内部の入射場を再構成する．
-この方法で得られた入射場の様子を{\rm 図}-\ref{fig:inc_btm}に示す．
-この結果には，下から左上に向かう横波が最初に現れる様子が示されている．
-実験ではプレート上面の領域$S$に置かれた探触子で入射波が励起されている．
-しかしながら，{\rm 図}-\ref{fig:inc_btm}ではプレート下面での
-振動波形を使って内部の場を再構成している．
-つまり，プレート下面を経由した波動場だけが現れており，超音波探触子
-からの直達波は再構成されない．ただし，超音波探触子からの
-入射角は65から70度程度で，探触子位置は，プレート下面で一回反射した
-横波が切り欠きコーナー部周辺に到達するように設定しているので,
-送信源からスリットに直接到達する実体波は非常に弱く、散乱波の
-発生にもほとんど寄与していないと考えられるので,直龍波が
-再構成されないことはここでは問題とならない.
-\begin{figure}[htb]
-\centering
-	\includegraphics[clip,scale=0.4]{Figs/IncBtm.eps}
-	\caption{計測波形から再構成した入射場(スリットがない場合)}
-	\label{fig:inc_btm}
-\end{figure}
-{\rm 図}-\ref{fig:inc_btm}と{\rm 図}-\ref{fig:snap_crack}に
-示した時間反反転場解析の結果を使って計算した
-$K_\rho(\fat{x}),K_{\lambda}(\fat{x})$および$K_{\mu}(\fat{x})$
-を{図-}\ref{fig:imgs}に示す.
-\begin{figure}[htb]
-\centering
-	\includegraphics[clip,scale=0.6]{Figs/imgs.eps}
-	\caption{計測波形から合成したRTM画像}
-	\label{fig:imgs}
 \end{figure}

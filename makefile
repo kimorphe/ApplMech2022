@@ -1,7 +1,7 @@
 main.pdf: main.dvi
 	dvipdfmx -p a4 main.dvi
-main.dvi: main.tex  1_intro.tex 2_experiment.tex 3_timerev.tex Figs/samples.eps\
-	 Figs/model_bead.eps Figs/experiment.eps Figs/bscans.eps\
+main.dvi: main.tex  1_intro.tex 2_experiment.tex 3_timerev.tex 4_rtm.tex\
+	 Figs/samples.eps Figs/model_bead.eps Figs/experiment.eps Figs/bscans.eps\
 	 Figs/kwfilted_xt.eps Figs/kwfilted_kw.eps Figs/SnapCrackRwv.eps\
 	 Figs/sim_model.eps Figs/SnapCrack.eps Figs/SnapNone.eps\
 	 Figs/IncTopCrack.eps Figs/IncTopNone.eps Figs/IncBtm.eps\

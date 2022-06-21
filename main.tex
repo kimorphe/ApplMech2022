@@ -76,60 +76,80 @@ works well with reverberating wavefield.
  demonstrates the usefulness of the time-reversal approach in the context of 
  ultrasonic flaw detectin in the reverberating environment.
 
-	time-reversal focusing fields are reconstructed numerically from measured ultrasonic signals. 
+time-reversal focusing fields are reconstructed numerically from measured ultrasonic signals.
 In the ultrasonic measurement, reverberating field is excited in a T-shape joint specimen with and without a simulated crack. 
-The measured waveforms are time-reversed and back-propagated in numerical finite-difference models of the specimen. 
-It is found as a result that the scattered fields back-focus successfully to the scattering sources, 
+The measured waveforms are time-reversed and back-propagated in numerical finite-difference models of the specimen.
+It is found as a result that the scattered fields back-focus successfully to the scattering sources,
 and thus the wave components useful for the flaw detection may be retrieved from the reverberating waveforms.
 \end{Eabstract}
 \begin{keyword}
 time-reversal, ultrasonic nondestructive testing, crack, scattering
 \end{keyword}
 \maketitle
-
 \section{はじめに}
-\input{1_intro.tex}
+	\input{1_intro.tex}
 \section{超音波エコー計測}
-\input{2_experiment.tex}
+	\input{2_experiment.tex}
 \section{時間反転場の集束挙動}
-\input{3_timerev.tex}
+	\input{3_timerev.tex}
+\section{RTMイメージング}
+	\input{4_rtm.tex}
+\section{まとめ}
+本研究では，実験で計測した超音波波形を使った時間反転場の解析を行うとともに，
+RTM(reverse time migration)に基づく欠陥の超音波イメージングを行った．
+その結果，微弱なスリットからのエコーを，散乱源であるスリット位置に正しく
+時間反転集束させられることを示した．超音波イメージングでは，
+FWI(fullwave inversion)の${\rm Fr\acute{e}chet}$ Kernelに相当する
+画像化関数を用い欠陥画像を合成したところ，超音波で強く照射される
+スリット上半分と，スリットの起点となる切り欠き側面が正確に検出される
+ことが分かった．以上のことから，時間反転法場，すなわち，動弾性問題の随伴場
+の計算に基づく最適化やイメージング法は，溶接継手のような複雑な形状をした
+狭い領域に対する超音波イメージングにも有用であることが示された．
 
+時間反転場の計算結果として明らかになった散乱波の伝播経路は，
+溶接ビード表面を経由し，縦波から横波へのモード変換を伴うものであった．
+元々、入射波や周辺境界からの反射波や回折波に比べて微弱であることに
+加えこのような複雑な経路をたどるエコーの存在を観測した超音波波形だけから
+知ることは非常に困難であり，時間反転場の計算によって初めて検出
+され，利用可能となるものである．
+さらに，時間反転場を使ったRTMイメージングで得られた結果は，背景の
+ノイズが多いということで改善の余地はあるものの，スリットとその
+起点となる切り欠き側面を検出しており，同等の正確さでの画像化は
+従来法である開口合成法やその類似法では経路特定と波形変化の
+予想が難しいという意味で原理的に達成が困難なものである．
+以上の結果は，きず周辺での回折や反射に超音波の反響が無視できず，
+エコー伝播経路も複雑となり得る状況で、時間反転集束に基づく
+エコー識別や画像化が，有効なアプローチとなることを示唆する．
 
-\begin{table}[htb]
-\caption{表のキャプションは表の上に置く．インデントが長いときは自動的に折り返される．}
-\label{tab:sample}
-\centering
-\begin{tabular}{|c|c|c|}\hline
-資料番号 & 高さ $h(\mathrm{m})$ &幅 $w(\mathrm{m})$ \\\hline
-1 & 1.45 & 0.25\\
-2 & 1.75 & 0.40\\
-3 & 1.90 & 0.65\\\hline
-\end{tabular}
-\end{table}
-``\verb|\usepackage{jjsce-macros}|''
-を有効にしている場合，図表の参照に
-``\verb|\figref{}|''，
-``\verb|\tabref{}|''
-が使えます．
+今後は，送受信位置が時間反転場の挙動に与える影響を調べて最適化をすること，
+RTMイメージングの信号-ノイズ比を改善することが課題となる．
+また、超音波探傷試験への実用化に向けた課題としては，
+時間反転場の計算効率を改善することが重要となる．さらに，実際の探傷には
+環境振動や対象物の表面性状に影響を受けやすいレーザー振動計でなく，
+圧電センサーを使った計測を行うことが望ましい。
+従って，時間反転集束法に適したアレイ探触子の開発や使用も
+高品質な観測データを得るために重要な課題となる。
 
-\section{参考文献の引用とリスト}
-参考文献は出現順に番号を振り，その引用箇所でこのように\cite{a}上付き右括弧付き数字で指示します．
-
-\verb|\usepackage[superscript]{cite}|を有効にしている場合，
-``\verb|\cite{a,b,c,d}|''と記述すると，
-\cite{a,b,c,d} と記載されます．
-``文献\verb|\Cite{a}|''と記述すると、
-文献\Cite{a} と上付き添字ではなく文章中に記載されます．
-
+%``\verb|\usepackage{jjsce-macros}|''
+%を有効にしている場合，図表の参照に
+%``\verb|\figref{}|''，
+%``\verb|\tabref{}|''
+%が使えます．
+%\section{参考文献の引用とリスト}
+%参考文献は出現順に番号を振り，その引用箇所でこのように\cite{a}上付き右括弧付き数字で指示します．
+%\verb|\usepackage[superscript]{cite}|を有効にしている場合，
+%``\verb|\cite{a,b,c,d}|''と記述すると，
+%\cite{a,b,c,d} と記載されます．
+%``文献\verb|\Cite{a}|''と記述すると、
+%文献\Cite{a} と上付き添字ではなく文章中に記載されます．
 \Acknowledgment % 謝辞：
 「謝辞」は「結論」の後に置いて下さい．
-
-\appendix
-\section*{付録の見出し}
-付録のsectionが一つしかない場合は，付録に番号をつける必要がありません．
-``\verb|\section*{}|''を用いてください．
-付録のsectionが複数ある場合は，
-``\verb|\section{}|''を用いてください．
+%\appendix
+%\section*{付録の見出し}
+%付録のsectionが一つしかない場合は，付録に番号をつける必要がありません．
+%``\verb|\section*{}|''を用いてください．
+%付録のsectionが複数ある場合は，
+%``\verb|\section{}|''を用いてください．
 
 \begin{thebibliography}{9}
 \bibitem{FDTD_book}
@@ -157,13 +177,17 @@ time-reversal, ultrasonic nondestructive testing, crack, scattering
 	ultrasonic imaging -past and present,
 	\textit{ J. Nondestruct. Eval. },Vol.31, pp.310-323, 2012.
 \bibitem{a}
-本間仁，安芸皓一：物部水理学，pp. 430-463，岩波書店，1962. [Honma, S. and Aki, K.: \textit{Mononobe Suiri-gaku}, pp. 430-463, Iwanami Shoten, 1962.]
+	本間仁，安芸皓一：物部水理学，pp. 430-463，岩波書店，1962. 
+	[Honma, S. and Aki, K.: \textit{Mononobe Suiri-gaku}, pp. 430-463, Iwanami Shoten, 1962.]
 \bibitem{b}
-日本道路協会：道路橋示方書・同解説IV下部構造編，pp. 110-119，1996. [Japan Road Association: \textit{Dorokyo-shihosyo \& Doukaisetsu} IV Kabukouzo-hen, pp. 110-119, 1996.]
+	日本道路協会：道路橋示方書・同解説IV下部構造編，pp. 110-119，1996. 
+	[Japan Road Association: \textit{Dorokyo-shihosyo \& Doukaisetsu} IV Kabukouzo-hen, pp. 110-119, 1996.]
 \bibitem{c}
-Shepard, F. P. and Inman, D. L.: Nearshore water circu-lation related to bottom topography and wave refraction, \textit{Trans. AGU}., Vol. 31, No. 2, 1950.
+	Shepard, F. P. and Inman, D. L.: Nearshore water circu-lation related to bottom topography and wave refraction, 
+	\textit{Trans. AGU}., Vol. 31, No. 2, 1950.
 \bibitem{d}
-C. R. ワイリー（富久泰明訳）：工学数学（上），pp. 123-140，ブレイン図書，1973. [Wylie, C. R. (translated by Tomihisa, Y.): \textit{Advanced Eingineering Mathmatic}, Brain-tosho, 1973.]
+	C. R. ワイリー（富久泰明訳）：工学数学（上），pp. 123-140，ブレイン図書，1973. 
+	[Wylie, C. R. (translated by Tomihisa, Y.): \textit{Advanced Eingineering Mathmatic}, Brain-tosho, 1973.]
 \end{thebibliography}
 \end{document}
 

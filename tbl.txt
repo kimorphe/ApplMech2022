@@ -1,8 +1,11 @@
 \begin{table}[htb]
-  \caption{}
-  \begin{tabular}{lcrr}
-    メニュー & サイズ & 値段 & カロリー \\
-    牛皿 & 特盛 & 1,000円 & 350 kcal
-  \end{tabular}
-\label{tbl:}
+\caption{表のキャプションは表の上に置く．インデントが長いときは自動的に折り返される．}
+\label{tab:sample}
+\centering
+\begin{tabular}{|c|c|c|}\hline
+資料番号 & 高さ $h(\mathrm{m})$ &幅 $w(\mathrm{m})$ \\\hline
+1 & 1.45 & 0.25\\
+2 & 1.75 & 0.40\\
+3 & 1.90 & 0.65\\\hline
+\end{tabular}
 \end{table}
