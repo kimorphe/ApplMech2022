@@ -1,3 +1,386 @@
-線形弾性波の支配方程式は時間反転操作に関して普遍である．そのため，観測で得られた試験体表面の振動波形を境界値として初期値-境界値問題を時間に関して逆方向に解くことで，媒体内部の散乱波伝播挙動を調べることができる．き裂からの散乱波が観測波形に含まれる場合，時間反転波形で励起された波動場（時間反転場）の一部は，散乱波の発生源であるき裂に向かって集束すると期待される．その様子を観察できれば，き裂位置や向き等の推定につながる有用な情報を観測波形から抽出できる．ただし，観測波形は試験体表面の一部でしか得られず，時間反転問題における初期条件も正確には知りえない．さらに，観測ノイズも存在することから，時間反転場の再構成は完全ではありえない．従って，再構成された時間反転場において，散乱源に集束する波動場が必ずしも得られるとは限らない．
-時間反転場の計算には2次元FDTD法を用いた．その際，  Fig.3に示した速度波形を，によって時間反転し，を新たな時間変数としたを境界値に用いた．ただし，sで，における試験体内部の場は未知であるため，時間反転場解析における初期速度と初期応力場はともゼロと仮定した．媒体は非減衰，等方均質な線形弾性体とし，縦波および横波の位相速度を，それぞれ実測値から6.35km/sと3.15km/sとした．FDTD法による離散化は，これらの位相速度に対し安定条件を満足するよう，空間格子間隔を0.05mm, 時間ステップ間隔を0.0125sとした．
-Fig.4は以上の方法で得られた時間反転場のsにおけるスナップショットである． (a)がき裂を含む供試体に対する結果を，(b)がき裂の無い供試体に対する結果で，粒子速度の大きさをカラーマップで表示している．ただし，粒子速度の値は，適度なコントラストで波動場が可視化されるようにスケールした相対値である．これらの結果から明らかなように，き裂のある供試体ではき裂面に向けて，き裂の無い供試体ではルートギャップの角部に向けて集束する散乱波が明瞭に現れている．これらの散乱波成分の位置を，時間を追って調べると，概ねFig.4に白の破線で示した経路をたどる．(a)のケースでは，フランジ底面で2回の反射後，余盛り表面を経由した波がき裂面に集束しており(b)と経路が大きく異なる．このことは，観測波形を適切に処理すれば，反響環境下でもき裂検出と位置推定が可能であることを示唆する．ただし，従来のイメージング法では散乱波の経路を予め把握しておく必要があり，多数の経路が想定される今回のような条件では適用が困難である．一方，時間反転法では，散乱源に集束する波動場を得るにあたり，伝播経路や伝播モードに関する仮定や事前情報を必要とせず，その点に大きなメリットがある．Fig.4はこのことを例示する良好な結果と言える．
+時間反転集束法では，観測波形を時間反転して媒体へ入力し，散乱波の伝播を時間を遡る形で調べる．
+これを実験や数値シミュレーションで行う場合，どのような物理量として時間反転波形を入力するか
+決定する必要がある．ここでは，前節で示した観測波形を時間反転し，表面力として数値解析モデルに
+与える．これは， フルウェーブ・インバージョン(fullwave inversion: FWI)における随伴場を
+計算することに相当する．そこで本節では，はじめに動弾性問題の基礎方程式と，FWIにおける随伴問題を示す．
+次に，観測波形を境界値に用いた随伴問題の解析結果を示し，散乱源への波動場の集束状況を調べる．
+計算は全て二次元(面内波)問題として行い，ベクトルやテンソル成分表記には総和規約を適用する．
+従って指標は1あるいは2をとるが，3次元問題としてを考える際も指標の範囲を除き，以下の定式化に変更は無い．
+なお，以下では，随伴問題の解(随伴場)を時間反転場と称する．
+\subsection{動弾性問題の基礎式}
+領域$G$，時間範囲$T=(0,\, t_f)$における超音波の伝播・散乱問題を線形弾性体における動弾性問題として考える．
+いま，位置ベクトルは$\boldsymbol{x}=(x_1,x_2)$，時間変数を$t$とし，物体力は働かないものとする．
+応力テンソルを$\sigma_{ij}$, 速度ベクトルを$v_i$，質量密度を$\rho$とすれば，運動方程式は
+\begin{equation}
+	\rho \dot{v}_i=\sigma_{ji,j}, \ \ (\boldsymbol{x},t)\in G\times T
+	\label{eqn:}
+\end{equation}
+と表される．ただし，$(,)$は空間の，$\dot{()}$は時間の微分
+\begin{equation}
+	(\cdot)_{,i}=\frac{\partial (\cdot)}{\partial x_i}, \ \ 
+	\dot{(\cdot)}=\frac{\partial (\cdot)}{\partial x_i}, \ \ 
+	\label{eqn:}
+\end{equation}
+を表す．速度$v_i$は変位ベクトル$u_i$の時間微分で与えられ，
+ひずみテンソル$\varepsilon_{ij}$は，変位を使って
+\begin{equation}
+	\varepsilon_{ij}=\frac{1}{2}(u_{i,j}+u_{j,i})
+	\label{eqn:FWD}
+\end{equation}
+と表される．弾性係数テンソルを$C_{ijkl}$とすれば，フック則は
+\begin{equation}
+	\sigma_{ij}=C_{ijkl}\varepsilon_{kl}
+	\label{eqn:}
+\end{equation}
+で与えられ，媒体を等方性体とすれば，$C_{ijkl}$を
+ラメ定数$\lambda$と$\mu$を用いて
+\begin{equation}
+	C_{ijkl}=\lambda \delta_{ij}\delta_{kl} +
+	\mu (
+	\delta_{ik}\delta_{jl}
+	+
+	\delta_{il}\delta_{jk} 
+	)
+	\label{eqn:}
+\end{equation}
+とすることができる．このとき，縦波および横波の位相速度は，それぞれ，
+\begin{equation}
+	c_{L}=\sqrt{\frac{\lambda + 2\mu}{\rho}}
+	, \ \ 
+	c_{T}=\sqrt{\frac{\mu}{\rho}}
+	\label{eqn:}
+\end{equation}
+となる．$t=0$を超音波の送信時刻とすれば，初期条件は
+\begin{equation}
+	u_i(\boldsymbol{x},0)=0, \ \ v_i(\boldsymbol{x},0)=0, \ \ \boldsymbol{x} \in G
+	\label{eqn:IC}
+\end{equation}
+としてよい．超音波の励起は領域境界$\partial G$の一部$S$に加えた
+既知の表面力$\bar{t}_i^{n}$によって行われ，それ以外の領域境界で
+表面力働かないとすれば，境界条件は次のようになる．
+\begin{equation}
+	t_i^{(n)} = \sigma_{ji}n_j=
+	\left\{
+		\begin{array}{ll}	
+			\bar{t}^{(n)}_i, & (\fat{x},t)\in S\times T \\
+			0,  & (\boldsymbol{x},t)\in (\partial G \setminus S)\times T) 
+		\end{array}
+	\right.
+	\label{eqn:BC}
+\end{equation}
+ここで$\fat{n}_i$は外向きの単位法線ベクトルを表す．
+\subsection{随伴問題(時間反転場の支配方程式系)}
+超音波探傷で検出すべき欠陥を弾性係数や密度が周囲と異なる領域(インクルージョン)と
+みなせば$C_{ijkl}$や$\rho$の分布を推定することで欠陥を検出ができる．FWIは
+これらのモデルパラメータ:
+\begin{equation}
+	\fat{m}=\left( \rho, \, C_{ijkl}\right)
+	\label{eqn:mprms}
+\end{equation}
+を推定するために提案されている方法の一つである．
+FWIでは，観測波形と仮定したモデルパラメータ$\fat{m}$に対して得られる
+シミュレーション波形の差を最小化するように，$\fat{m}$を推定する．
+いま，未知の欠陥が領域$G$に含まれるとして，境界$\partial G$の一部
+$R\in\partial G$で観測を行い，データ
+\begin{equation}
+	\left\{ 
+	\left. 
+	u_n^{meas}(\boldsymbol{x},t)\right|  (\boldsymbol{X},t)\in R\times T
+	\right\}
+	\label{eqn:data}
+\end{equation}
+を得たとする．ここで，$u_n=u_in_i$は変位の法線方向成分を表す．
+いま，前項で述べた波動伝播問題の解として得られる，シミュレーション波形を$u(\boldsymbol{x},t)$とし，
+FWIにおける目的関数を
+\begin{equation}
+	\chi(\fat{m}):= \frac{1}{2} \int _T\int _R \left|u_n-u_n^{meas}\right|^2 dtds
+	\label{eqn:cost}
+\end{equation}
+とする．このとき，$\chi(\fat{m})$の次の意味での
+$\delta \fat{m}=(\delta \rho,\, \delta C_{ijkl})$方向への微分
+\begin{equation}
+	\nabla \chi (\fat{m})\delta \fat{m} = \lim_{\varepsilon \rightarrow 0}
+	\frac{1}{\varepsilon}
+	\left\{
+		\chi(\fat{m}+\varepsilon \delta \fat{m})
+		-
+		\chi(\fat{m})
+	\right\}
+	\label{eqn:}
+\end{equation}
+は
+\begin{equation}
+	\nabla \chi(\fat{m}) = 
+	-\int_G K_{\rho}(\fat{x})\delta \rho dv
+	- 
+	\int_G K_{ijkl}(\fat{x}) \delta C_{ijkl} dv
+	\label{eqn:}
+\end{equation}
+の形で表される．
+$K_\rho(\fat{x})$と$K_{ijkl}(\fat{x})$はFr$\acute{\rm e}$chet kernelと呼ばれ，
+随伴問題の解$u^{\dagger}(\fat{x},t)$を用いて次のように与えられる．
+\begin{eqnarray}
+	K_\rho(\fat{x}) &= & \int _T \dot{u}_i \dot{u}^{\dagger}_i dt 
+	\label{eqn:Frechet_rho}
+	\\
+	K_{ijkl}(\fat{x}) &= & \int _T u_{i,j} u^{\dagger}_{k,l} dt 
+	\label{eqn:Frechet_C}
+\end{eqnarray}
+ここで$u_i^{\dagger}$を解にもつ随伴問題は，次のような終端値-境界値問題である．
+\begin{itemize}
+\item
+支配方程式:
+\begin{equation}
+	\rho \ddot{u}_i^{\dagger} =
+	\sigma^{\dagger}_{ji,j}, \ \ 
+	\left(
+	\sigma_{ij}^{\dagger}= C_{ijkl}u_{k,l}^{\dagger}\right)
+	b\label{eqn:wveq_adj}
+\end{equation}
+\item: 
+終端条件:
+\begin{equation}
+	u_i^{\dagger}(\fat{x},t_f) =0,  \ \
+	\dot{u}_i^{\dagger}(\fat{x},t_f) =0,  \ \
+	\label{eqn:IC_adj}
+\end{equation}
+\item:
+境界条件:
+\begin{equation}
+	t_i^{(n)\dagger}
+	=
+	\sigma_{ji}^{\dagger}n_j =
+	\left\{
+		\begin{array}{ll}
+			-(u_n-u_n^{meas})n_i, & \fat{x}\in R \\
+			0, & \fat{x} \in \partial G\setminus R
+		\end{array}
+	\right.
+	\label{eqn:BC_adj}
+\end{equation}
+\end{itemize}
+式(\ref{eqn:wveq_adj})-(\ref{eqn:BC_adj})で表される随伴問題は，
+\begin{equation}
+	\tau=t_f-t
+	\label{eqn:tau_def}
+\end{equation}
+の時間反転操作によって$\tau$を新しい時間変数に，通常の弾性波の
+初期値-境界値問題に帰着される．勿論，物理的な時間$t$に関して言えば時間を
+遡る方向に問題を解くことになるため，その結果得られる随伴場$u_i^{\dagger}(\fat{x},\tau)$は，
+時間反転場とみなすことができる．
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.55]{Figs/sim_model.eps}
+	\caption{解析対象領域．各部の寸法は試験体({\rm 図}-\ref{fig:model})と同じ．}
+	\label{fig:fd_model}
+\end{figure}
+\subsection{数値解析法と計算条件}
+時間反転場の数値解析，すなわち，随伴問題(\ref{eqn:wveq_adj})-(\ref{eqn:BC_adj})の解析
+には2次元FDTD法を用いる．
+また，モデルパラメータであるラメ定数$\lambda, \mu$と密度$\rho$は，実測で得たアルミニウム試験体
+の位相速度
+\begin{equation}
+	c_L=6.35{\rm km/s}, \ \ c_T=3.15{\rm km/s}
+	\label{eqn:}
+\end{equation}
+と，密度$\rho=2.7{\rm g/cm}^3$で与えた．随伴問題の境界条件(\ref{eqn:BC_adj})において，
+$u_n^{meas}$には実験で得られた超音波波形を用いる．LDV計測では速度波形が与えられるが，
+FDTD法では速度と応力を未知数として解析を行う．その際，境界条件も数値解析上は速度境界条件
+として与えるため，LDVをによる観測波形をそのまま用いることができる．一方，順問題の解である
+$u_n(\fat{x},t)$には，入射波変位$u_n^{in}$を与えることが望ましい．
+そうすることができれば$u_n^{meas}$は全変位だから$u_n-u_n^{meas}$は散乱波成分になり，
+散乱源に戻る波動場を明瞭に観察できると期待される．
+しかしながら，実際の観測波形にはノイズが含まれること，送信源(超音波探触子)の
+正確なモデル化が難しいこと,本来は3次元問題であることから，観測波形から
+入射波成分を正確に差し引くことは難しい．そこで，観測波形を右進行波$u_n^{+}(x_1,t)$と左進行波$u_n^{-}(x_1,t)$に分離し，
+$u_i^{-}(x_1,t)$を観測波形から差し引く．この分離は，観測波形を2次元フーリエ変換して波数-周波数スペクトル:
+\begin{equation}
+	U(k,\omega)= \frac{1}{(2\pi)^2} \iint u_n(x_1,t)e^{-ikx_1+i\omega t}dtdx_1
+	\label{eqn:}
+\end{equation}
+を計算し，その逆変換を波数-周波数の帯域を制限して次のようにして行うことで得た．
+\begin{eqnarray}
+	u_n^-(x_1,t) &=& \iint H(-k\omega)U(k,\omega)e^{ikx_1+i\omega t}dk d\omega
+	\label{eqn:um} \\
+	u_n^+(x_1,t) &=& \iint H(k\omega) U(k,\omega)e^{ikx_1-i\omega t}dk d\omega 
+	\label{eqn:up}
+\end{eqnarray}
+ただし，$H(s)$はヘビサイドステップ関数を表す．
+{\rm 図}-\ref{fig:kwfilted_xt}の(a)と(b)は，{\rm 図}-\ref{fig:bscans}(a)に示した
+データを$\dot u(x_1,t)$として，式(\ref{eqn:um})と(\ref{eqn:up})で計算した
+左，および右進行波速度$\dot{u}^-,\dot{u}^+$の走時プロットである．なおこれらの
+速度波形は$\dot u_n(x_1,t)$の最大値で規格化したもので，計測位置をあらわすための
+$(x,y,z)$座標系と波動問題の定式化で用いた位置ベクトルの関係は
+$\fat{x}=(x_1,x_2)=(x,y)$である．
+{\rm 図-}\ref{fig:kwfilted_xt}(a)の結果では，右上がりの波群はほとんど見られず，
+左進行波が適切に取り出されていることが分かる．一方，{\rm 図}-\ref{fig:kwfilted_xt}(b)
+では，主として右進行波からなることが確認できるが，一部，振幅の大きな左進行波が
+除去しきれいてない．これは，LDVによる観測誤差が原因で，特に，供試体表面のレーザー光
+の反射強度の空間変動に依存して，観測される波形振幅が変化するため，
+振幅値が観測位置の変化に対して滑らかに推移しないことに起因している．
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.5]{Figs/kwfilted_xt.eps}
+	\caption{走時プロット(a)左進行波，(b)右進行波，(c)表面波成分を除去した右進行波}
+	\label{fig:kwfilted_xt}
+\end{figure}
+図\ref{fig:kwfil}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{時間反転場の挙動}
+式(\ref{eqn:BC_adj})において$u_n(x_1,t)=u_n^-(x_1,t)$とし，
+\begin{equation}
+	u_n^(x_1,t) - u_n^{meas}(x_1,t)
+	=
+	u_n^-(x_1,t) - u_n^{meas}(x_1,t)
+	=
+	u_n^+(x_1,t)
+	\label{eqn:BC_rwv}
+\end{equation}
+を境界値としてFDTD法で計算した時間反転場を{\rm 図}-\ref{fig:snap_crack_rwv}に示す．
+この図は，速度場$| \dot{\fat{u}}_n^{\dagger}(\fat{x},t)|$のスナップショットを6つの
+異なる時刻$\tau$について示したものである．
+ただし，粒子速度の値は，適度なコントラストで波動場が可視化されるようにスケールした相対値である．
+$\tau$は実時間$t$と式(\ref{eqn:tau_def})の関係にあるため，{\rm 図}-\ref{fig:snap_crack_rwv}
+は(a)から(f)の順に物理的な時間を遡る方向への進展挙動を示している．
+(a)の時刻では，大きな振幅を持った箇所は表面近傍に集中している．
+これは，表面波が大きな振幅をもって伝播していることを示すものである．
+少し時間が経過した(b)では，溶接止端部である$x_1=0$の位置で回折波が生じ，
+継手内部へ主としてSV波として進展する．このようにして回折によって
+発生したSV波は必然的に空間的に広がり集束しない．
+従って，本来の散乱源であるスリットの検出や位置の特定にはあまり有効ではない．
+\begin{figure}
+%	[htb]
+\centering
+	\includegraphics[clip,scale=0.4]{Figs/SnapCrackRwv.eps}
+	\caption{時間反転場の進展状況(スリットがある場合)}
+	\label{fig:snap_crack_rwv}
+\end{figure}
+そこで，表面は成分を入力波形$u_n^{-}(x_1,t)$から取り除いて，時間反転場の計算を行う．
+表面波の位相速度$c_R$は，等方弾性体の場合$c_L$と$c_T$から理論的に求められる．
+また，計測波形から求めた右進行波$u_n^+(x_1,t)$の波数-周波数
+スペクトル$U^+(k,\omega)=H(-k\omega)U(k,\omega)$上で，傾き$c_R^{-1}$の傾きの
+直線に沿って分布する．{\rm 図}-\ref{fig:kwfilted_kw}(a)はこのことを示す
+ために$|U^+(k,\omega)|$をプロットしたものである．
+横軸は周波数$f=\frac{\omega}{2\pi}$，縦軸は波数$\xi=\frac{k}{2\pi}$を表し，
+スペクトル振幅をカラー表示している．
+この中で、傾き$1/c_R=1/3.05$(km/s)$^{-1}$の原点を通る直線付近の成分が
+表面波で，非常に狭い範囲に分布していることが分かる．そこで，この直線に
+そってガウス型の窓関数を作用させ，表面波成分を取り除いたのが
+{\rm 図}-\ref{fig:kwfilted_kw}(b)の結果である．これを，時空間領域に
+フーリエ逆変換すると{\rm 図}-\ref{fig:kffilted_xt}(c)の走時波形が得られ，
+同図(b)に見られた右あがりの直線的な指示が概ね取り除かれていることが分かる．
+これを境界値として用い計算した時間反転場を{\rm 図}-\ref{fig:snap_crack}に示す．
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.4]{Figs/kwfilted_kw.eps}
+	\caption{計測波形の波数-周波数スペクトル}
+	\label{fig:kwfilted_kw}
+\end{figure}
+この図には，時間反転波形の入力域$R$から当初下向きに進んだ波が，プレート下面で
+反射されてビード部分に向かう様子が(a)と(b)に現れている．
+続く(c)-(e)では，ビード表面で反射されて向きを変えた波が，
+スリットに向かって集束していく様子が示されている．
+また、ここに見える波群の進行速度から，励起された直後は縦波，ビード表面で反射
+された後は横波として伝わっていると考えられる．
+このような経路と伝播モードが十分検出しうる強度で観測波形に含まれることを
+事前に知ることは困難で、表面波の除去と時間反転場の計算によってはじめて明らかと
+なったと言える．経路の把握や選択が予め可能でない以上，開口合成法のような方法で
+ここで見出されたような散乱波を像合成に利用することはできず，本来波形に
+含まれる散乱波の情報を十分に活用することができない．
+
+同じようにして，スリットが無い試験体で得られた波形から計算した時間反転場を
+{\rm 図}-\ref{fig:snap_none}に示す．ここでも，観測波形({\rm 図}-\ref{fig:bscans}(b))
+を進行方向で分離した後，表面波成分の除去を行い，その時間反転波形をFDTD解析に
+用いて，時間反転場を計算している．
+そのためデータ処理上の差は全く無く，観測波形自体を比較してもあまりはっきりとした
+違いは無い．しかしながら，{\rm 図}-\ref{fig:snap_none}に示し結果は，スリットが
+ある場合と大きく異なり，横波がモード変換することなく，プレート下面で一回反射した
+後，ルートギャップを模擬した切り欠きのコーナ部分に集束していることが分かる．
+両者の違いは，スリットの有無のみであるため、互いを比較することでスリットが存在する
+ことを知ることができることが分かる．
+このことは，観測波形を適切に処理すれば，今回のように多数の反射波や回折波
+が存在する反響環境下でもき裂検出と位置推定が可能であることを意味している．
+従来のイメージング法では散乱波の経路を予め把握しておく必要があり，
+多数の経路が想定される今回のような条件では適用が困難である．一方，時間反転法では，
+散乱源に集束する波動場を得るにあたり，伝播経路や伝播モードに関する仮定や事前情報
+を必要とせず，その点に大きなメリットがある．{\rm 図}-\ref{fig:snap_crack}，
+{\rm 図}-\ref{fig:snap_none}はこのことを例示する良好な結果と言える．
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.4]{Figs/SnapCrack.eps}
+	\caption{時間反転場の進展状況(スリットがある場合)}
+	\label{fig:snap_crack}
+\end{figure}
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.4]{Figs/SnapNone.eps}
+	\caption{時間反転場の進展状況(スリットがない場合)}
+	\label{fig:snap_none}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{RTMイメージング}
+最後に，reverse time migration(RTM)の考え方に基づき，簡単な像合成を行った結果を示す．
+RTMでは入射場と時間反転場の量の相関を取る形で，モデルパラメータのコントラストを
+イメージングする．例えば，速度場を用いる場合，画像関数$I(\fat{x})$を次のようにして
+計算する.
+\begin{equation}
+	I(\fat{x})=\int_T \dot u^{in}_i(\fat{x},t) \dot u_i^{\dagger}(\fat{x},t)dt
+	\label{eqn:Ix}
+\end{equation}
+これは，FWIにおけるFr$\acute{\rm e}$chet kernelの一つである$K_\rho$で
+$u_i=u_i^{in}$とした場合に他ならない．つまり，RTMではFWIにおける勾配を画像化関数，
+すなわち欠陥検出指標として用いているいうことができる．
+(ただし、RTMでは他にも様々な画像化関数が提案されているため，FWIのサブカテゴリー
+という言い方は必ずしも正確ではない．)
+そこで，もう一つのカーネルである$K_{ijkl}(\fat{x})$も用いて,
+二通りの方法で像合成を行ってみる.$K_{ijkl}$は4階のテンソルだが，等方性体の
+弾性係数(\ref{eqn:})を用いれば，
+\begin{equation}
+	\int_G K_{ijkl}C_{ijkl}dv
+	=
+	\int_G \lambda u_{i,i}u^{\dagger}_{j,j} dv
+	+
+	\int_G \mu u_{i,j}u^{\dagger}_{i,j} dv
+	\label{eqn:}
+\end{equation}
+と表すことができる．そこで，
+\begin{equation}
+	K_\lambda:= \int_T u_{i,i}u^{\dagger}_{j,j} dv
+	\label{eqn:}
+\end{equation}
+\begin{equation}
+	K_\mu:= \int_T u_{i,j}u^{\dagger}_{i,j} dv
+	\label{eqn:}
+\end{equation}
+を$u_i=u_i^{in}$としてイメージングを行ってみる．
+そのためには入射場が必要となる．そこで，図\ref{fig:domain}において
+$R'$で示したプレート裏面でLDVで観測した表面振動波形をFDTDモデルの
+速度境界値として与え，領域内部の入射場を再構成する．
+この方法で得られた入射場の様子を{\rm 図}-\ref{fig:inc_btm}に示す．
+この結果には，下から左上に向かう横波が最初に現れる様子が示されている．
+実験ではプレート上面の領域$S$に置かれた探触子で入射波が励起されている．
+しかしながら，{\rm 図}-\ref{fig:inc_btm}ではプレート下面での
+振動波形を使って内部の場を再構成している．
+つまり，プレート下面を経由した波動場だけが現れており，超音波探触子
+からの直達波は再構成されない．ただし，超音波探触子からの
+入射角は65から70度程度で，探触子位置は，プレート下面で一回反射した
+横波が切り欠きコーナー部周辺に到達するように設定しているので,
+送信源からスリットに直接到達する実体波は非常に弱く、散乱波の
+発生にもほとんど寄与していないと考えられるので,直龍波が
+再構成されないことはここでは問題とならない.
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.4]{Figs/IncBtm.eps}
+	\caption{計測波形から再構成した入射場(スリットがない場合)}
+	\label{fig:inc_btm}
+\end{figure}
+{\rm 図}-\ref{fig:inc_btm}と{\rm 図}-\ref{fig:snap_crack}に
+示した時間反反転場解析の結果を使って計算した
+$K_\rho(\fat{x}),K_{\lambda}(\fat{x})$および$K_{\mu}(\fat{x})$
+を{図-}\ref{fig:imgs}に示す.
+\begin{figure}[htb]
+\centering
+	\includegraphics[clip,scale=0.6]{Figs/imgs.eps}
+	\caption{計測波形から合成したRTM画像}
+	\label{fig:imgs}
+\end{figure}

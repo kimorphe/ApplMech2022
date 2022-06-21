@@ -1,7 +1,6 @@
-\begin{figure}
-\begin{center}
+\begin{figure}[htb]
+\centering
 	\includegraphics[clip,scale=0.5]{Figs/.eps}
 	\caption{ }
 	\label{fig:}
-\end{center}
 \end{figure}
