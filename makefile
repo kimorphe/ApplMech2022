@@ -1,11 +1,11 @@
 main.pdf: main.dvi
 	dvipdfmx -p a4 main.dvi
 main.dvi: main.tex  1_intro.tex 2_experiment.tex 3_timerev.tex 4_rtm.tex\
-	 Figs/samples.eps Figs/model_bead.eps Figs/experiment.eps Figs/bscans.eps\
+	 Figs/samples.eps Figs/model_bead.eps Figs/experiment.eps Figs/experiment2.eps Figs/bscans.eps\
 	 Figs/kwfilted_xt.eps Figs/kwfilted_kw.eps Figs/SnapCrackRwv.eps\
 	 Figs/sim_model.eps Figs/SnapCrack.eps Figs/SnapNone.eps\
 	 Figs/IncTopCrack.eps Figs/IncTopNone.eps Figs/IncBtm.eps\
-	 Figs/imgs.eps
+	 Figs/imgs.eps Figs/imgs_zoom.eps
 	platex main.tex
 
 Figs/samples.eps: Figs/samples.svgz
@@ -14,6 +14,8 @@ Figs/model_bead.eps: Figs/model_bead.svgz
 	inkscape -z -f Figs/model_bead.svgz -E Figs/model_bead.eps
 Figs/experiment.eps: Figs/experiment.svgz
 	inkscape -z -f Figs/experiment.svgz -E Figs/experiment.eps
+Figs/experiment2.eps: Figs/experiment2.svgz
+	inkscape -z -f Figs/experiment2.svgz -E Figs/experiment2.eps
 Figs/bscans.eps: Figs/bscans.svgz
 	inkscape -z -f Figs/bscans.svgz -E Figs/bscans.eps
 Figs/sim_model.eps: Figs/sim_model.svgz
@@ -36,3 +38,5 @@ Figs/IncBtm.eps: Figs/IncBtm.svgz
 	inkscape -z -f Figs/IncBtm.svgz -E Figs/IncBtm.eps
 Figs/imgs.eps: Figs/imgs.svgz
 	inkscape -z -f Figs/imgs.svgz -E Figs/imgs.eps
+Figs/imgs_zoom.eps: Figs/imgs_zoom.svgz
+	inkscape -z -f Figs/imgs_zoom.svgz -E Figs/imgs_zoom.eps
