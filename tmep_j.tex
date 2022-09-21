@@ -1,0 +1,167 @@
+%% Last Modified: June 20th 2021
+
+\documentclass{jjsce}
+%\documentclass[jscefinal]{jjsce}% 登載可決定後の最終原稿を提出するときはこちら → ページ番号なしになる
+
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[defaultsups]{newtxtext}
+\usepackage[varg]{newtxmath}
+\usepackage{bm} % 数式でボールドイタリックを使いたいとき
+%% graphicx 利用の場合は以下のどちらかを選ぶ
+\usepackage[dvipdfmx]{graphicx}% (u)pLaTeX + dvipdfmx の場合
+%\usepackage{graphicx}% LuaLaTeXの場合
+%\usepackage[dvips]{graphicx}
+%\usepackage{xcolor}
+\usepackage[superscript]{cite}
+\usepackage{url}
+\usepackage{endnotes}
+\usepackage[savepos]{zref}
+%% hyperref 利用の場合は以下のどちらかを選ぶ
+\usepackage[dvipdfmx]{hyperref}% (u)pLaTeX + dvipdfmx の場合
+\usepackage{pxjahyper}% (u)pLaTeX + dvipdfmx の場合はこれを併用する
+%\usepackage[luatex,pdfencoding=auto]{hyperref}% LuaLaTeXの場合
+\aboveEtitlesep20mm % 最終ページの英文タイトル部：本文末の並行止めした後のスペース調整．詳細はreadme.pdf参照．
+
+%\usepackage[noto-otc,unicode]{pxchfon}
+\usepackage{jjsce-macros}
+
+\begin{document}
+\jtitle{土木学会論文集和文原稿作成例}
+%\jsubtitle{}
+\etitle{FORMATTING JAPANESE MANUSCRIPT FOR JOURNALS OF JSCE}
+%\esubtitle{}
+\authorlist{%
+ \authorentry{土木 太郎}{Taro DOBOKU}{jsce}
+ \authorentry{四谷 花子}{Hanako YOTSUYA}{CO}
+ \authorentry{John SMITH}{John SMITH}{JS}
+}
+\affiliate[jsce]{正会員　土木大学教授　工学部土木工学科
+（\jipcode{160--0004}東京都新宿区四谷一丁目無番地）}{doboku@jsce.ac.jp}
+\Caffiliate[CO]{正会員　土木建設株式会社　技術開発部
+（\jipcode{160--0004}東京都新宿区三矢六丁目13-5）}{hanako@jsce.co.jp }
+\affiliate[JS]{Member of JSCE, JSCE Corp.}{}
+%\Jbreakauthorline{4}
+%\breakauthorline{4}
+%\received{2022}{1}{31} Received Date を記入
+%\accepted{2022}{4}{28} Accepted Date を記入
+\begin{abstract}
+要旨の長さは350字以内です．キーワードは5つ程度書いて下さい．
+\end{abstract}
+\begin{Eabstract}
+The length of English abstract should be 300 words or less.
+\end{Eabstract}
+\begin{keyword}
+times, italic, 10pt, one blank line below abstract, indent if key words exceed one line
+\end{keyword}
+\maketitle
+
+\section{はじめに}
+
+jjsce.cls の詳しい使い方については，同梱の readme.pdf を参照してください．
+
+\subsection{LaTeXを使用する上での注意点}
+\begin{itemize}
+ \item 著者のメールアドレスを省略したい場合は，
+\verb@\affiliate@ の最後のメールアドレスの欄に何も記入しないようにしてください．
+
+ \item 一度，\verb@\footnote@を使用すると，その後\verb@\footnote@を削除してもNOTESが残ります.
+NOTESを削除するためには，\textit{filename}.ent という名前のファイルを削除してください．
+
+ \item \verb|\usepackage{jjsce-macros}|を有効にしている場合，図表の参照に
+\verb|\figref{}|，\verb|\tabref{}|が使えます．
+
+ \item \verb|\usepackage[superscript]{cite}|を有効にしている場合，
+\verb|\cite{a,b,c,d}|と記述すると，
+\cite{a,b,c,d} と記載されます．
+文献\verb|\Cite{a}|と記述すると，
+文献\Cite{a} と上付き添字ではなく文章中に記載されます．
+
+ \item 
+付録のsectionが一つしかない場合は，付録に番号をつける必要がありません．
+\verb|\section*{}|を用いてください．
+付録のsectionが複数ある場合は，
+\verb|\section{}|を用いてください．
+
+\end{itemize}
+
+
+
+\section{見出し（見出しが1行以上に長くなるときはこの例のようにインデントし折り返されます）}
+見出しのレベルは章，節，項の3段階までとします．
+項より下位の見出しは用いないで下さい．
+
+\section{数式および数学記号}
+数式や数学記号は次の式
+\begin{align}
+G&=\sum_{n=0}^\infty b_n(t)\\
+F&=\int_{\Gamma}\sin z \mathrm{d}z
+\end{align}
+のように本文と独立している場合でも，
+$C_D, \alpha(z)$のように文章の中に出てくる場合でも同じ数式用のフォントを用いて作成します．
+数式や数学記号の品質が悪いと版下原稿として受け付けません．
+\section{図表}
+\subsection{図表の位置}
+図表はそれらを最初に引用する文章と同じページに置くことを原則とします．原稿末尾にまとめたりしてはいけません．また，図表の横幅は，「2段ぶち抜き」あるいはこのサンプルの表-1や図-2のように「1段の幅いっぱい」のいずれかとします．図表の幅を1段幅以下にして図表の横に本文テキストを配置することはやめて下さい．図表と文章本体との間には1～2行程度の空白を空けて区別を明確にします．
+
+\subsection{図表中の文字およびキャプション}
+図表中の文字や数式の大きさが小さくなり過ぎないように注意してください．特にキャプションの大きさ(9pt)より小さくならないようにして下さい．
+長いキャプションは\tabref{tab:sample}のようにインデントして折り返します．
+
+
+\begin{table}[htb]
+\caption{表のキャプションは表の上に置く．インデントが長いときは自動的に折り返される．}
+\label{tab:sample}
+\centering
+\begin{tabular}{|c|c|c|}\hline
+資料番号 & 高さ $h(\mathrm{m})$ &幅 $w(\mathrm{m})$ \\\hline
+1 & 1.45 & 0.25\\
+2 & 1.75 & 0.40\\
+3 & 1.90 & 0.65\\\hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{figure}[htb]
+\centering
+\rule{20mm}{20mm}
+%includegraphics{}
+\caption{図のキャプションは図の下に置く}
+\label{fig:sample}
+\end{figure}
+
+
+\section{参考文献の引用とリスト}
+
+参考文献は出現順に番号を振り，その引用箇所でこのように\cite{a}上付き右括弧付き数字で指示します．
+参考文献はそのすべてを原稿の末尾のREFERENCESにまとめてリストとして示し，脚注にはしないでください．
+既往研究としての参考文献以外に，根拠資料や史的研究の資料としての文献を示す場合には，REFERENCESとは別に引用箇所でこのように
+\footnote{1933（昭和8）年7月20日発都第15号地方長官・都市計画地方委員会長宛内務次官通牒「都市計畫調査資料及計畫標準ニ關スル件」}
+上付き文字で指示し，NOTESとしてREFERENCESの前にリストを示してください．
+NOTESには本文に対するその他の文末注も含みます．
+そのためNOTESの書式は，本文に補足すべき十分な情報を含めれば特に規定をしないものとします．
+REFERENCESは英語表記（和文の場合は [ ] 内に英文併記）を求めますが，NOTESは文献通りの表記で示してください．
+
+
+
+\Acknowledgment % 謝辞：
+「謝辞」は「結論」の後に置いて下さい．
+
+\appendix
+\section*{「付録」の位置}
+「付録」がある場合は「謝辞」の後に置いて下さい．
+
+\begin{thebibliography}{9}
+\bibitem{a}
+本間仁，安芸皓一：物部水理学，pp. 430-463，岩波書店，1962. [Honma, S. and Aki, K.: \textit{Mononobe Suiri-gaku}, pp. 430-463, Iwanami Shoten, 1962.]
+\bibitem{b}
+日本道路協会：道路橋示方書・同解説IV下部構造編，pp. 110-119，1996. [Japan Road Association: \textit{Dorokyo-shihosyo \& Doukaisetsu} IV Kabukouzo-hen, pp. 110-119, 1996.]
+\bibitem{c}
+Shepard, F. P. and Inman, D. L.: Nearshore water circu-lation related to bottom topography and wave refraction, \textit{Trans. AGU}., Vol. 31, No. 2, 1950.
+\bibitem{d}
+C. R. ワイリー（富久泰明訳）：工学数学（上），pp. 123-140，ブレイン図書，1973. [Wylie, C. R. (translated by Tomihisa, Y.): \textit{Advanced Eingineering Mathmatic}, Brain-tosho, 1973.]
+\end{thebibliography}
+
+\end{document}

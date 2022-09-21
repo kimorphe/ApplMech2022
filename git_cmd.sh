@@ -8,6 +8,8 @@ git add *.txt
 git add Figs/*.svgz
 git add Figs/PNGs/*.py
 git add Figs/Model
+git add *.odt
+git add *.html
 # Makefile
 git add makefile
 

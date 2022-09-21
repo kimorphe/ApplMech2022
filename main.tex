@@ -1,7 +1,6 @@
-\documentclass{jjsce}
+﻿\documentclass{jjsce}
 %\documentclass[jscefinal]{jjsce}% 登載可決定後の最終原稿を提出するときはこちら → ページ番号なしになる
 
-\usepackage{showkeys}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage[defaultsups]{newtxtext}
@@ -31,7 +30,7 @@
 %\jsubtitle{}
 \etitle{
 	TIME-REVERSAL FOCUSING OF ELASTODYNAMIC SCATTERED WAVES 
-FROM A CRACK IN A REVERBERATING ENVIRONMENT}
+	FROM A CRACK IN A REVERBERATING ENVIRONMENT}
 %\esubtitle{}
 \authorlist{%
  \authorentry{木本　和志}{Kazushi KIMOTO}{OU}
@@ -44,43 +43,34 @@ FROM A CRACK IN A REVERBERATING ENVIRONMENT}
 
 %\Jbreakauthorline{4}
 %\breakauthorline{4}
-%\received{2022}{1}{31} Received Date を記入
+%\received{2022}{6}{24} Received Date を記入
 %\accepted{2022}{4}{28} Accepted Date を記入
 \begin{abstract}
-本研究は時間反転集束の原理に基づく超音波イメージングが，多重反射が無視できない
-反響環境下における超音波探傷にも有効であることを，実験と数値シミュ-ション
-によって実証することを目的として行ったものである．
-実験では，T継手形状を模擬した試験体を用いてスリットからの散乱波を含む
-場を試験体表面で多点計測した．得られた波形は時間反転して数値波動解析モデルに
-入力し，時間反転場の進展挙動を調べた．その結果，計測波形では全く検出することの
-できない散乱波成分が散乱源であるスリットへ正しく集束する様子を可視化することが
-できた．さらに，時間反転場をreverse time migrationの方法で画像化したところ，
-散乱源位置に正しく結像することを示し，微弱な散乱波を自動的に検出して
-超音波イメージングが可能であることから，時間反転集束法が継手のような
-複雑形状部位の超音波探傷に有用であることを明らかにした．
+本研究は，時間反転集束の原理に基づくイメージングが，超音波が反響
+する状況での探傷にも有効であることを，実験と数値シミュレーション
+で示したものである．実験ではT継手形状を模擬した試験体を用い，
+人工き裂からの散乱エコーを計測した．数値シミュレーションでは，
+時間反転した計測波形を差分法解析の境界値として与え，時間反転場の
+集束挙動を調べた．その結果，計測波形上では識別困難なき裂エコーが，
+時間反転場において散乱源に集束する様子が明瞭に追跡できることを示した．
+さらに，計算で得た時間反転場を利用した超音波イメージングを行い，
+散乱源位置を正確に示す画像が得られることを示した．以上により，
+時間反転集束法が，継手のような多重反射や回折波が混在する状況での
+超音波探傷にも有効であることを明らかにした．
 \end{abstract}
 \begin{Eabstract}
-In this study, ultrasonic measurments and simulations are perfoemed to show 
-that the ultrasonic flaw imaging based upon the time-reversal focusin concept 
-works well with reverberating wavefield.
- This study demonstrates that the ultrasonic imaging based upon time-reversal 
- focusing concept works well with a reverberating wavefield using the measured 
- ultrasonic waveforms. To this end, ultrasonic measurements are performed 
- with a specimen mimkcinkg the T-shape joint geometry having a slit as an articifial flaw. 
- The measured set of ultrasonic waveformes are then time-reversed and re-emmited at 
- their observation points in the finite-difference numerical model.
- The observation on the time-reversed fields reveals that a 
- very small scattered waves from the flaw focuses back to the slit. 
- Further more reverse-time image synthesized from the forward and 
- time reversed fields can detect the scattering source successfully thus 
- demonstrates the usefulness of the time-reversal approach in the context of 
- ultrasonic flaw detectin in the reverberating environment.
-
-time-reversal focusing fields are reconstructed numerically from measured ultrasonic signals.
-In the ultrasonic measurement, reverberating field is excited in a T-shape joint specimen with and without a simulated crack. 
-The measured waveforms are time-reversed and back-propagated in numerical finite-difference models of the specimen.
-It is found as a result that the scattered fields back-focus successfully to the scattering sources,
-and thus the wave components useful for the flaw detection may be retrieved from the reverberating waveforms.
+In this study, ultrasonic measurements and simulations are performed to show 
+that the time-reversal imaging works well in the context of ultrasonic testing 
+involving reverberating wave fields. In the experiment, ultrasonic echoes from 
+an artificial crack in a T-joint specimen are measured. The measured waveforms 
+are then time-reversed and re-emitted into a finite difference numerical 
+model for the investigation of focusing in a reverberating environment.
+It is found as a result that the path of the scattered waves can be traced 
+in the time-reversed field back to its origin though their presence is hardly 
+recognizable in the original signals. Moreover, the scattering source 
+can be located accurately in the reverse-time migration images, 
+thus highly robust nature of the time-reversal focusing concept has 
+been demonstrated in a ultrasonic testing context.
 \end{Eabstract}
 \begin{keyword}
 time-reversal, ultrasonic nondestructive testing, crack, scattering, imaging
@@ -92,44 +82,40 @@ time-reversal, ultrasonic nondestructive testing, crack, scattering, imaging
 	\input{2_experiment.tex}
 \section{時間反転場の集束挙動}
 	\input{3_timerev.tex}
-\section{RTMイメージング}
+\section{RTMによる時間反転イメージング}
 	\input{4_rtm.tex}
 \section{まとめ}
-本研究では，実験で計測した超音波波形を使った時間反転場の解析を行うとともに，
+本研究では，実験で得た超音波波形を使った時間反転場の集束挙動解析と，
 RTM(reverse time migration)に基づく欠陥の超音波イメージングを行った．
-その結果，微弱なスリットからのエコーを，散乱源であるスリット位置に正しく
-時間反転集束させられることを示した．超音波イメージングでは，
-FWI(fullwave inversion)の${\rm Fr\acute{e}chet}$ Kernelに相当する
-画像化関数を用い欠陥画像を合成したところ，超音波で強く照射される
-スリット上半分と，スリットの起点となる切り欠き側面が正確に検出される
-ことが分かった．以上のことから，時間反転法場，すなわち，動弾性問題の随伴場
-の計算に基づく最適化やイメージング法は，溶接継手のような複雑な形状をした
-狭い領域に対する超音波イメージングにも有用であることが示された．
-
-時間反転場の計算結果として明らかになった散乱波の伝播経路は，
-溶接ビード表面を経由し，縦波から横波へのモード変換を伴うものであった．
-元々、入射波や周辺境界からの反射波や回折波に比べて微弱であることに
-加えこのような複雑な経路をたどるエコーの存在を観測した超音波波形だけから
-知ることは非常に困難であり，時間反転場の計算によって初めて検出
-され，利用可能となるものである．
-さらに，時間反転場を使ったRTMイメージングで得られた結果は，背景の
-ノイズが多いということで改善の余地はあるものの，スリットとその
-起点となる切り欠き側面を検出しており，同等の正確さでの画像化は
-従来法である開口合成法やその類似法では経路特定と波形変化の
-予想が難しいという意味で原理的に達成が困難なものである．
-以上の結果は，きず周辺での回折や反射に超音波の反響が無視できず，
-エコー伝播経路も複雑となり得る状況で、時間反転集束に基づく
-エコー識別や画像化が，有効なアプローチとなることを示唆する．
-
-今後は，送受信位置が時間反転場の挙動に与える影響を調べて最適化をすること，
-RTMイメージングの信号-ノイズ比を改善することが課題となる．
-また、超音波探傷試験への実用化に向けた課題としては，
-時間反転場の計算効率を改善することが重要となる．さらに，実際の探傷には
-環境振動や対象物の表面性状に影響を受けやすいレーザー振動計でなく，
-圧電センサーを使った計測を行うことが望ましい。
-従って，時間反転集束法に適したアレイ探触子の開発や使用も
-高品質な観測データを得るために重要な課題となる。
-
+その結果，
+観測波形に含まれる微弱なエコーを，時間反転場において散乱源であるスリットに
+正しく集束させられることを示した．また，超音波イメージングでは，
+FWI(fullwave inversion)の${\rm Fr\acute{e}chet}$ Kernelにあたる画像化関数を
+用いて欠陥画像を合成し，スリットと切り欠きの中で，入射超音波に照射される部位が
+極めて正確に検出されることを示した．これらのことから，時間反転場を利用したイメージング法が，
+溶接継手のような複雑な形状をした狭い領域の超音波イメージングにも有用であることを明らかにした．
+なお，時間反転場の計算結果として今回検出された散乱波の伝播経路は，溶接ビード表面を経由し，
+さらに縦波から横波へのモード変換を伴うものであった．このような経路を辿るエコーの
+存在を予め想定し，トモグラフィー的な方法でイメージングを行うことは難しく，
+少なくともこの点において，時間反転法には従来の超音波イメージング法にない
+明確なメリットがある．
+%入射波や周辺境界からの反射波や回折波に比べ，
+%微弱なものであることに加え，溶接部を経由どるエコーの存在を
+%さらに，時間反転場を使ったRTMイメージングで得られた結果は，
+%背景のノイズが多いということで改善の余地はあるものの，
+%スリットとその起点となる切り欠き側面を検出しており，同等の正確さでの画像化は
+%従来法である開口合成法やその類似法では経路特定と波形変化の予想が難しいという
+%意味で原理的に達成困難なものである．以上の結果は，きず周辺での回折や反射に超音波の反響が無視できず，
+%エコー伝播経路も複雑となり得る状況で，時間反転集束に基づく
+%エコー識別や画像化が，有効なアプローチとなることを示唆する．
+\\
+\hspace{\parindent}
+今後は，送受信位置が時間反転場の挙動に与える影響を調べて最適化し，RTMイメージングの
+信号-雑音比を改善することが課題となる．また，超音波探傷試験への実装に向け，
+時間反転場の計算効率を改善することも重要となる．また，実際の探傷には，環境振動や
+対象物表面の性状に影響を受けやすいレーザー振動計は適さず，圧電センサーの利用
+が望ましい．そのため，時間反転集束法に適したアレイ探触子の開発や使用も，
+高品質な観測データを得るために今後取り組むべき課題となる．
 %``\verb|\usepackage{jjsce-macros}|''
 %を有効にしている場合，図表の参照に
 %``\verb|\figref{}|''，
@@ -140,25 +126,24 @@ RTMイメージングの信号-ノイズ比を改善することが課題とな�
 %\verb|\usepackage[superscript]{cite}|を有効にしている場合，
 %``\verb|\cite{a,b,c,d}|''と記述すると，
 %\cite{a,b,c,d} と記載されます．
-%``文献\verb|\Cite{a}|''と記述すると、
+%``文献\verb|\Cite{a}|''と記述すると，
 %文献\Cite{a} と上付き添字ではなく文章中に記載されます．
 \Acknowledgment % 謝辞：
-「謝辞」は「結論」の後に置いて下さい．
+本研究の一部は，一般社団法人中国建設弘済会，技術開発支援事業(助成期間:2021-2022年度)
+の支援を受けて行ったものである．ここに記して謝意を表する．
 %\appendix
 %\section*{付録の見出し}
 %付録のsectionが一つしかない場合は，付録に番号をつける必要がありません．
 %``\verb|\section*{}|''を用いてください．
 %付録のsectionが複数ある場合は，
 %``\verb|\section{}|''を用いてください．
-
 \begin{thebibliography}{9}
-\bibitem{FDTD_book}
-	佐藤雅弘：FDTD法による弾性振動・波動の解析入門，pp. 34-49，森北出版，2003. 
-	[Satoh, M.: \textit{FDTD-hou niyoru Danseishindou\& Hadou-no-kaiseki-nyumon}, pp. 34-49, Morikita Syuppan, 2003.]
-\bibitem{FDTD_KK}
-	Kimoto, K. and Ichikawa, Y.:
-	A finite difference method for elastic wave scattering by a planar crack with contacting faces
-	, \textit{Wave Motion}., Vol. 52, pp.120-137, 2015.
+% PA
+\bibitem{Wilcox2007}
+	Wilcox,P. D., Holmes, C., and Drinkwater, B. W.:
+	Advanced reflector characterization with ultrasonic phased arrays in NDE applications,
+	\textit{ IEEE Trans. Ultraso. Feroelect. Freq. Contr.}, Vol.54, No. 8, pp.1541-1550, 2007.
+% SAFT
 \bibitem{Thomson1984}
 	Thomson, R. N.:
 	Transverse and longitudinal resolution of the synthetic aperture focusing technique,
@@ -167,6 +152,10 @@ RTMイメージングの信号-ノイズ比を改善することが課題とな�
 	Doctor, S. R., Hall, T. E. and Reid, L. D.:
 	SAFT -the evolution of a signal processing technology for ultrasonic testing,
 	\textit{ NDT International},Vol.19, No.3, pp.163-167, 1986. 
+\bibitem{Langenberg1986}
+	Langenberg,K.J., Berger,M., Kreutter,Th., Mayer,K., and Schmitz, V.:
+	Synthetic aperture focusing technique signal processing,
+	\textit{NDT International}, Vol.19, No.3, pp.177-189, 1986.
 \bibitem{Schmitz2000}
 	Schmitz, V.,  Chakhlov, S. and M\"{u}ller, W.:
 	Experiences with synthetic aperture focusing technique in the field,
@@ -176,6 +165,164 @@ RTMイメージングの信号-ノイズ比を改善することが課題とな�
 	Synthetic aperture focusing and time-of-flight diffraction 
 	ultrasonic imaging -past and present,
 	\textit{ J. Nondestruct. Eval. },Vol.31, pp.310-323, 2012.
+% TFM
+\bibitem{Holmes2008}
+	Holmes,C., Drinkwater, B. W., and  Wilcox, P. D.:
+	Adcanced post-processing for scanned ultrasonic arrays: Application to 
+	defect detection and clasification in non-destructive evaluation,
+	\textit{ Ultrasonics},Vol. 48,pp.636-642,2008.
+\bibitem{Zhang2010}
+	J. Zhang, B. W. Drinkwater , P. D. Wilcox, and A. J. Hunter,
+	"Defect detection using ultrasonic arrays: The multi-mode total focusing method",
+	\textit{ NDT \& E International}, Vol.43, pp.123-133, 2010.
+% POFFIS
+\bibitem{Langenberg1989}
+	Langenberg,K. J.:
+	Introduction to the special issue on inverse problems,
+	\textit{ Wave Motion}, Vol. 11, pp.99-112, 1989.
+\bibitem{Kitahara2002}
+	Kitahara, M., Nakahata, K., and Hirose, S.:
+	Elastodynamic inversion for shape reconstruction and type classification of flaws,
+	\textit{ Wave Motion},Vol. 36, pp.443-455, 2002.
+\bibitem{Shlivinski2007}
+	Shlivinski, A. and Langenberg, K. J.:
+	Defect imaging with elastic waves in inhomogeneous-anisotropic materials with 
+	composite geometries,
+	\textit{ Ultrasonics},Vol. 46, pp.89-104, 2007.
+% U-rib 
+%\bibitem{FDTD_book}
+%	佐藤雅弘：FDTD法による弾性振動・波動の解析入門，pp. 34-49，森北出版，2003. 
+%	[Satoh, M.: \textit{FDTD-hou niyoru Danseishindou\& Hadou-no-kaiseki-nyumon}, pp. 34-49, Morikita Syuppan, 2003.]
+%\bibitem{Urib1}
+%	村越 潤, 高橋 実, 小池 光裕, 木村 友則: 臨界屈折角近傍に調整した超音波斜角探触子による鋼床版デッキ進展き裂の探傷法の検討,
+%	土木学会論文集A1(構造・地震工学), 68巻, 2号, pp.453-464, 2012.
+%	[Murakoshi, J. Takahashi, M., Koike, M., and Kimura, T.: \textit{Study on practical ultrasonic inspection method for fatigue cracks in 
+%	steel orthotropic deckplates}, Journal of Japan Society of Civil Engineers, Ser. A1 (Structural Engineering \& Earthquake Engineering 
+%	pp.453-464, Vol.68, No.2, 2012.]
+%\bibitem{Urib2}
+%	八木 尚人, 鈴木 俊光, 若林 登, 村野 益巳, 三木 千壽: 鋼床版トラフリブ溶接部の内在疲労き裂に対するフェーズドアレイ超音波探傷試験の適用,
+%	土木学会論文集A1(構造・地震工学), 72巻, 3号, pp.393-406, 2016.  [Yagi, N., Suzuki,T. Wakabayashi, N., Murano, M., and Miki, C.: 
+%	\textit{Detection of inner fatigue crack in welding between steel deck plate and through rib by phased array non-destructive testing}, 
+%	Journal of Japan Society of Civil Engineers, Ser. A1 (Structural Engineering \& Earthquake Engineering pp.393-406, Vol.73, No.3, 2016.]
+\bibitem{Urib3}
+	服部 雅史, 牧田 通, 舘石 和雄, 判治 剛, 清水 優, 八木 尚人:
+	鋼床版Uリブ・デッキプレート溶接部の内在き裂に対するフェーズドアレイ超音波探傷の測定精度,
+	土木学会論文集A1(構造・地震工学),74巻, 3号, pp.516-530, 2018.
+	[Hattori,M. Makita,T., Tateishi,K. Hanji,H., Shimizu, M., and Yagi, N.: 
+	\textit{Crack sizing accuracy of a phased array ultrasonic scanner developed for 
+	inspection of rib-to-deck welded joints in orthotropic steel decks}, 
+	Journal of Japan Society of Civil Engineers, 
+	Ser. A1 (Structural Engineering \& Earthquake Engineering 
+	pp.393-406, Vol.73, No.3, 2016.]
+%DORT
+\bibitem{FinkTextBook}
+	Fink,M., Kuperman, W.A.,  Montagner,J.-P., and Tourin, A.(Eds.):
+	Imaging of complex media with acoustic and seismic waves, Springer (2002)
+\bibitem{Fink1992}
+	Fink,M.:
+	Time reversal of ultrasonic fiels - Part I: Basic principles",
+	\textit{IEEE Trans. Ultrason., Ferroelect., Freq. Contr.}, Vol.39, pp.555-566, 1992.
+\bibitem{Prada1994}
+	Prada, C. and Fink, M.: 
+	Eigenmode of the time reversal operator: A solution to selective focusing in multiple-target media, 
+	\textit{ Wave Motion}, Vol.20, pp.151-163, 1994. 
+\bibitem{Prada1995}
+	Prada, C. and Fink, M.: 
+	Selective focusing through inhomogeneous media: the DORT method,
+	\textit{ IEEE Ultrasonics Symposium}, pp.1449-1453, 1995. 
+\bibitem{Prada1995_2}
+	Prada, C. and Fink, M.: 
+	The iterative time reversal process: Analysis of the convergence, 
+	\textit{J. Acoust. Soc. Amer.}, Vol.97, pp.62-71, 1995.
+\bibitem{Mordant1999}
+	Mordant,N., Prada,C., and Fink, M.:
+	Highly resolved detection and selective focusing in a waveguide using the D.O.R.T. method,
+	\textit{ J. Acoust. Soc. Am.}, Vol.105, No.5, pp.2634-2642, 1999. 
+\bibitem{Tanter2000}
+	Tanter, M., Thomas, J.-L., and Fink,M.:
+	Time reversal and the iterative filter, 
+	\textit{ J. Acoust. Soc. Am.}, Vol.108, No.1, pp.223-234, 2000. 
+%RTM
+\bibitem{Yan2008}
+	 Yan, J. and Sava, P.:
+	Isotropic angle-domain elastic reverse-time migration,
+	\textit{ Geophysics}, Vol.73, No.6, pp.S229-S239, 2008. 
+\bibitem{Etgen2009}
+	Etgen,J., Gray,S.H., and Zhang, Y.: 
+	An overview of depth imaging in exploration geophysics,
+	\textit{ Geophysics}, Vol.74, No.6, WCA5-WCA17, 2009.
+\bibitem{Velichko2010}
+	Velichko, A.  and Wilcox, P. D.:
+	An analytical comparison of ultrasonic array imaging algorithm,
+	\textit{ J. Acoust. Soc. Am.}, Vol.127, pp.2377-2384, 2010.
+\bibitem{Chung2012}
+	Chung, W., Pyun,S., Bae,H.S., Shin,C. S., and Marfurt, K.J.:
+	Implementation of elastic reverse-time migration using wavefield separation in the frequency domain,
+	\textit{Geophys. J. int.}, Vol.189, pp.p1611-1625, 2012. 
+\bibitem{Jones}
+	Jones, I. F.:
+	Tutorial: migration imaging conditions, 
+	\textit{first break}, Vol.32, pp.45-55, 2014.
+\bibitem{KK_RTM}
+	Kimoto,K.,  Nakahata,K., and Saitoh, T.: 
+	An elastodynamic computational time-reversal method for shape reconstruction 
+	of traction-free scatterers, \textit{Wave Motion}, Vol.72,pp.23-40,2017.
+% FWI
+\bibitem{Talantola1984}
+	Talantola, A.:
+	Inversion of seismic reflection data in the acoustic approximation, 
+	\textit{Geophysics}, Vol.49, pp.1259-1266, 1984
+\bibitem{Fichtner}
+	Fichtner, A.: Full seismic waveform modelling and inversion,
+	Springer, pp.141-161, 2011. 
+% TDTG
+\bibitem{Dominguez2005}
+	Dominguez,N. and Gbiat, V.:
+	Time domain topological gradient and time reversal analogy: 
+	an inverse method for ultrasonic target detection, 
+	\textit{ Wave Motion}, Vol. 42, No.1, pp.31-52, 2005.
+\bibitem{Dominguez2010}
+	Dominguez,N. and Gbiat, V.:
+	Non-destructive imaging using the time domain topological energy method,
+	\textit{ Ultrasonics}, Vol.50, pp.367-372, 2010.
+\bibitem{Gibiat2010}
+	Gibiat, V. and Shuguet, P.:
+	Wave guide imaging through time domain topological energy,
+	\textit{ Ultrasonics}, Vol.50, pp.172-179, 2010.
+\bibitem{Bonnet2008}
+	Bonnet, M.: 
+	Topological sensitivity for 3D elastodynamci and acoustic inverse scattering in the time domain,
+	\textit{Computer Methods in Applied Mechanics and Engineering},Elsevier,195, pp.5239-5254.2006.
+\bibitem{Saitoh2021}
+	斎藤 隆泰, 田代 匡彦, 木本 和志: 
+	トポロジー感度を欠陥検出指標に用いた3 次元動弾性時間反転解析による欠陥形状再構成, 
+	土木学会論文集A2（応用力学）, 77巻, 2号, pp.I\_69-I\_79, 2021.
+	[Saitoh, T., Tashiro,M.,and KIMOTO,K.:
+	\textit{Shape reconstruction for a defect using 3-D elastodynamic time-reversal analysis with topologial sensitivity}, 
+	Journal of Japan Society of Civil Engineers, Ser.A2 (Applied Mechanics (AM)), 
+	Vol.77, No.2, pp.I\_69-I\_79,2021.] 
+\bibitem{Schmerr1999}
+	Schmerr,L. W.:
+	Fundamental of ultrasonic nondestructive evaluation: a modeling approach", Academic Press,1999.	
+%FDTD
+\bibitem{Fellinger1995}
+	Fellinger, P, Marklein,R., Langenberg,K.J., and Klaholz, S.: 
+	Numerical modeling of elastic wave propagation and scattering with EFIT 
+	-Elastodynamic finite integration technique, 
+	\textit{ Wave Motion}, Vol.21, pp.47-66, 1995.
+%\bibitem{FDTD_book}
+%	佐藤雅弘：FDTD法による弾性振動・波動の解析入門，pp. 34-49，森北出版，2003. 
+%	[Satoh, M.: \textit{FDTD-hou niyoru Danseishindou\& Hadou-no-kaiseki-nyumon}, pp. 34-49, Morikita Syuppan, 2003.]
+\bibitem{FDTD_KK}
+	Kimoto, K. and Ichikawa, Y.:
+	A finite difference method for elastic wave scattering by a planar crack with contacting faces
+	, \textit{Wave Motion}., Vol. 52, pp.120-137, 2015.
+\end{thebibliography}
+\end{document}
+\bibitem{Drinkwater2006}
+	Drinkwater, B. W. and . D. Wilcox, 
+	"Ultrasonic arrays for non-destructive evaluation: A review",
+	{\em NDT \& E International}, {\bf 39}(2006),525-541. 
 \bibitem{a}
 	本間仁，安芸皓一：物部水理学，pp. 430-463，岩波書店，1962. 
 	[Honma, S. and Aki, K.: \textit{Mononobe Suiri-gaku}, pp. 430-463, Iwanami Shoten, 1962.]
@@ -188,222 +335,11 @@ RTMイメージングの信号-ノイズ比を改善することが課題とな�
 \bibitem{d}
 	C. R. ワイリー（富久泰明訳）：工学数学（上），pp. 123-140，ブレイン図書，1973. 
 	[Wylie, C. R. (translated by Tomihisa, Y.): \textit{Advanced Eingineering Mathmatic}, Brain-tosho, 1973.]
-\end{thebibliography}
-\end{document}
-
-\bibitem{Mayer1989}
-	{K. Mayer, R. Marklein, K.J.Langenberg, and T. Kreutter,  
-	"Three-dimensional imaging system based on Fourier transform synthetic 
-	aperture focusing technique",
-	{\em Ultrasonics},{\bf 28}(1990),241-255.
-	}
-\bibitem{Levesque2002}
-	{D. L\'evesque, A. Blouin, C. N\'eron, J.-P. Monchalin, 
-	"Performance of laser-ultrasonic F-SAFT imaging",
-	{\em Ultrasonics},{\bf 40}(2002),1057-1063. 
-	}
-\bibitem{Rossignol2003}
-	{C. Rossignol, H. Meri, B. Audoin, 
-	"Laser generation of acoustic waves in an anisotropic medium; parametric analysis
-	for application to material characterization", 
-	{\em Review of Scientific Instruments}, {\bf 74}(2003), 470-473.
-	}
-\bibitem{Drinkwater2006}
-	{ B. W. Drinkwater and P. D. Wilcox, 
-	"Ultrasonic arrays for non-destructive evaluation: A review",
-	{\em NDT \& E International}, {\bf 39}(2006),525-541. 
-	}
-\bibitem{Wilcox2007}
-	{P. D. Wilcox, C. Holmes, B. W. Drinkwater,
-	"Advanced reflector characterization with ultrasonic phased arrays in NDE applications",
-	{\em IEEE Trans. Ultraso. Feroelect. Freq. Contr.}, {\bf 54}(8)(2007) 1541-1550.
-	}
-\bibitem{Holmes2008}
-	{C. Holmes, B. W. Drinkwater and P. D. Wilcox,
-	"Adcanced post-processing for scanned ultrasonic arrays: Application to 
-	defect detection and clasification in non-destructive evaluation",
-	{\em Ultrasonics},{\bf 48}(2008) 636-642.
-	}
-\bibitem{Shih2014}
-	{ R.-C. Shih, Y.-F. Chang, C-.H. Chang, P.-Y. Tseng, 
-	"Ultrasonic synthetic aperture focusing using the root-mean-square velocity"
-	{\em J. Nondstruct. Eval.},{\bf 33}(2014), 12-22.
-	}
-\bibitem{Qin2014}
-	{ K. Qin, C. Yang, F. Sun, 
-	"Generalized frequency-domain synthetic aperture focusing technique for ultrasonic 
-	imaging of irregularly layered objects",
-	{\em IEEE Trans. Ultraso. Feroelect. Freq. Contr.}, {\bf 61}(1)(2014) 133-146.
-	}
-\bibitem{Stepinski2007}
-	{ T. Stepinski,
-	"An implementation of synthetic aperture focusing technique in frequency domain",
-	{\em IEEE Trans. Ultraso. Feroelect. Freq. Contr.}, {\bf 54}(7)(2007) 1399-1408.
-	}
-\bibitem{Shlivinski2007}
-	{A. Shlivinski and K. J. Langenberg,
-	"Defect imaging with elastic waves in inhomogeneous-anisotropic materials with 
-	composite geometries",
-	{\em Ultrasonics},{\bf 46}(2007) 89-104.
-	}
-\bibitem{Schmerr1999}
-	{ L. W. Schmerr, "Fundamental of ultrasonic nondestructive evaluation: 
-	a modeling approach", Academic Press (1999).	
-	}
-\bibitem{Ceranoglu1981}
-	{ A. N. Ceranoglu, and Y.-H. Pao, 
-	"Propagation of elastic pulses and acoustic emission in a plate -Part 1:Theory",
-	{\em J. Appl. Mech.}, {\bf 48}(1)(1981), 125-132.
-	}
-\bibitem{Gridin1998}
-	{ D. Gridin, 
-	"High-frequency asymptotic description of head waves and boundary layers surrounding the critical rays in an elastic half-space",
-	{\em J. Acoust. Soc. Am.},{\bf 104}(3)(1998), 1188-1197. 
-	}
-\bibitem{Zhang2010}
-	{ J. Zhang, B. W. Drinkwater , P. D. Wilcox, and A. J. Hunter,
-	"Defect detection using ultrasonic arrays: The multi-mode total focusing method",
-	{\em NDT \& E International}, {\bf 43}(2010), 123-133.
-	}
-\bibitem{Langenberg1989}
-	{ K. J. Langenberg, "Introduction to the special issue on inverse problems",
-	{\em Wave Motion}, {\bf 11}(1989),99-112.
-	}
-\bibitem{Kitahara2002}
-	{M. Kitahara, K. Nakahata and S. Hirose,
-	"Elastodynamic inversion for shape reconstruction and type classification of flaws",
-	{\em Wave Motion},{\bf 36}(2002) 443-455
-	}
-\bibitem{Langenberg1997}
-	{ K. J. Langenberg, R. B\"{a}rmann, R. Marklein, S. Irmer, H. M\"{u}ller,
-	M. Brandfab, and B. Potzkai, "Electromagnetic and elastic wave scattering
-	and inverse scattering applied to concrete",
-	{\em NDT \& E International},{\bf 30}(4) 1997, 205-210.
-	}
-\bibitem{Langenberg2006}
-	{ K. J. Langenberg, K. Mayer and R. Marklein, 
-	" Nondestructive testing of concrete with electromagnetic and elastic waves: modeling and imaging",
-	{\em Cement \& Concrete Composites}, {\bf 28}(2006), 370-383.
-	}
-\bibitem{DevaneyTextBook}
-	{ A. J. Devaney, "Mathematical foundations of imaging, tomography and wavefield inversion",
-	Cambridge University Press(2012).
-	}
-\bibitem{Velichko2010}
-	{A. Velichko and P. D. Wilcox,
-	"An analytical comparison of ultrasonic array imaging algorithm",
-	{\em J. Acoust. Soc. Am.},{\bf 127}(2010), 2377-2384.
-	}
-\bibitem{Rose2015}
-	{ L. R. F. Rose, E. Chan and C. H. Wang,
-	"A comparison and extensions of algorithms for quantitative imaging
-	of laminar damage in plates. I. Point spread functions and near field imaging",
-	{\em Wave Motion},{\bf 58 }(2015),222-243.
-	}
-\bibitem{FinkTextBook}{
-	M. Fink, W. A. Kuperman, J.-P. Montagner, and A.Tourin (Eds.),
-	"Imaging of complex media with acoustic and seismic waves", Springer (2002)
-	}
-\bibitem{Prada1994}
-	{ C. Prada and M. Fink, 
-	"Eigenmode of the time reversal operator: A solution to selective focusing in 
-	multiple-target media", 
-	{\em Wave Motion}, {\bf 20}(1994), 151-163. 
-	}	
-\bibitem{Prada1995}
-	{ C. Prada and M. Fink, 
-	"Selective focusing through inhomogeneous media: the DORT method",
-	{\em IEEE Ultrasonics Symposium}, (1995), 1449-1453. 
-	}	
-\bibitem{Mordant1999}
-	{ N. Mordant, C. Prada, and M. Fink,
-	"Highly resolved detection and selective focusing in a waveguide using the D.O.R.T. method",
-	{\em J. Acoust. Soc. Am.},{\bf 105}(5)(1999),2634-2642. 
-	}
-\bibitem{Devaney2005}
-	{ A. J. Devaney, E. A. Marengo, and F. K. Gruber,
-	"Time-reversal-based imaging and inverse scattering of multiply scattering point targets",
-	{\em J. Acoust. Soc. Am.},{\bf 118}(5)(2005),3129-3138. 
-	}
-\bibitem{Marengo2007}
-	{ E. A. Marengo, F. K. Gruber, and F. Simonetti, 
-	"Time-reversal MUSIC imaging of extended targets",
-	{\em IEEE on Image Processing}, {\bf 16}(8)(2007), 1967-1984. 
-	}
-\bibitem{Labyed2012}
-	{ Y. Labyed and L. Huang, 
-	"Ultrasound time-reversal MUSIC imaging of extended targets", 
-	{\em Ultrasound in Med. \& Biol.}, {\bf 38}(11)(2012), 2018-2030.
-	}
-\bibitem{Dominguez2005}
-	{ N. Dominguez, and V. Gbiat,
-	"Time domain topological gradient and time reversal analogy: 
-	an inverse method for ultrasonic target detection", 
-	{\em Wave Motion}, {\bf42}(1)(2005), 31-52.
-	}
-\bibitem{Dominguez2010}
-	{ N. Dominguez, and V. Gibiat,
-	"Non-destructive imaging using the time domain topological energy method",
-	{\em Ultrasonics}, {\bf 50}(2010), 367-372.
-	}
-\bibitem{Gibiat2010}
-	{ V. Gibiat and P. Shuguet,
-	"Wave guide imaging through time domain topological energy",
-	{\em Ultrasonics},{\bf 50}(2010), 172-179.
-	}
-\bibitem{Etgen2009}
-	{ J. Etgen, S. H. Gray, and Y. Zhang, 
-	"An overview of depth imaging in exploration geophysics",
-	{\em Geophysics},{\bf 74}(6)(2009), WCA5-WCA17.
-	}
-\bibitem{Chung2012}
-	{ W. Chung, S. Pyun, H. S. Bae, C. S.Shin, and K. J. Marfurt,
-	"Implementation of elastic reverse-time migration using wavefield separation in the frequency domain",
-	{\em Geophys. J. int.},{\bf 189}(2012), 1611-1625. 
-	}
-\bibitem{Yan2008}
-	{ J. Yan and P. Sava,
-	"Isotropic angle-domain elastic reverse-time migration",
-	{\em Geophysics},{\bf 73}(6)(2008), S229-S239. 
-	}
-\bibitem{Achenbach2002}
-	{ J. D. Achenbach, 
-	"Modeling for quantitative non-destructive evaluation",
-	{\em Ultrasonics}, {\bf 40}(2002),1-10.
-	}
-\bibitem{Langenberg1986}
-	{K.J. Langenberg, M. Berger, Th. Kreutter, K. Mayer, and V. Schmitz,
-	"Synthetic aperture focusing technique signal processing",
-	{\em NDT International},{\bf 19}(3)(1986), 177-189.
-	}
-\bibitem{Fellinger1995}
-	{ P. Fellinger, R. Marklein, K.J. Langenberg, and S. Klaholz, 
-	"Numerical modeling of elastic wave propagation and scattering with EFIT 
-	-Elastodynamic finite integration technique", 
-	{\em Wave Motion},{\bf 21}(1995),47-66.
-	}
-\bibitem{Kimoto2015}
-	{ K. Kimoto, and Y. Ichikawa, 
-	"A finite difference method for elastic wave scattering by a planar crack 
-	with contacting faces",
-	{\em Wave Motion},{\bf 52}(2015),120-137.
-	}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \end{thebibliography}
 %\input{tables.tex}
 %\input{figs.tex}
 %\input{caption.tex}
 \end{document}
-
 %%
 %% End of file `elsarticle-template-1a-num.tex'.
-\bibitem{Zhang2010}
-	{J. Zhang, B. W. Drinkwater, P. D. Wilcox and A.J. Hunter,
-	"Defect detection using ultrasonic arrays: The multi-mode total focusing method",
-	{\em NDT \& E International}, {\bf 43}, (2010) 123-133.
-	}
-\bibitem{Devaney1984}
-	{ A. J. Devaney and G. Beylkin, 
-	"Diffraction tomography using arbitrary transmitter and receiver surfaces",
-	{\em Ultrasonic Imaging},{\bf 6}(1984), 181-193.
-	}
