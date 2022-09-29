@@ -1,5 +1,7 @@
 # Git commands
 git add git_cmd.sh
+# shell script
+git mkpdf.sh
 # Latex Source 
 git add *.tex
 git add *.sty
