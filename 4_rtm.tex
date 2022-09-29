@@ -54,7 +54,7 @@ FDTD計算で求めたものである．
 %
 LDV計測は{\bf 図}-\ref{fig:experiment2}に示す
 幅65mmの範囲$S'$において0.2mmピッチで行い，得られた速度波形を使い
-FDTD計算で入射場を再構成する．{\bf 図}-\ref{fig:fd_model}の$S'$は，
+FDTD計算で入射場，すなわちスリットが存在しない場合の波動場を再構成する．{\bf 図}-\ref{fig:fd_model}の$S'$は，
 その際，速度波形を与えて加振したFDTDモデル上の位置を表す．
 つまり，ここでは，実際の送信源である超音波探触子の
 設置面$S$でなく，$S'$に相当する位置で実測した波形を擬似的な
@@ -93,15 +93,15 @@ $K_{\mu}(\fat{x})$を{図-}\ref{fig:imgs}に示す.
 この図には，3種類のRTMイメージがそれぞれの最大値で無次元化して表示されている．
 ただし，散乱源の存在は画像化関数が正の値を取る箇所として示されるため，
 画素値の表示範囲は0から1としている．
-\begin{figure}[tbh]
-\centering
-	\includegraphics[clip,scale=0.6]{Figs/imgs.eps}
-	\caption{計測波形を用いて行った3種類のRTMイメージングの結果}
-	\label{fig:imgs}
-\end{figure}
+%\begin{figure}[tbh]
+%\centering
+%	\includegraphics[clip,scale=0.55]{Figs/imgs.eps}
+%	\caption{計測波形を用いて行った3種類のRTMイメージングの結果}
+%	\label{fig:imgs}
+%\end{figure}
 白の実線はFDTDモデル，すなわち，試験体の外形を示し，
 紫の実線は後に示す{\bf 図}-\ref{fig:imgs_zoom}において拡大表示する
-範囲を表している．なお，RTMイメージングは{\bf 図}-\ref{fig:fd_model})
+範囲を表している．なお，RTMイメージングは{\bf 図}-\ref{fig:fd_model}
 の解析領域全体で行っているが，{図-}\ref{fig:imgs}に示す継手周辺以外の場所では，
 画像化関数の値が小さく，有意な指示が現れないことを確認している．
 \\
@@ -117,10 +117,18 @@ $K_\rho$と$K_\mu$では，大きな画素値をもつ箇所が，実際の散�
 スリットと切り欠き側面に非常によく一致している．
 \begin{figure}[tbh]
 \centering
-	\includegraphics[clip,scale=0.6]{Figs/imgs_zoom.eps}
+	\includegraphics[clip,scale=0.55]{Figs/imgs.eps}
+	\caption{計測波形を用いて行った3種類のRTMイメージングの結果}
+	\label{fig:imgs}
+	\vspace{-3mm}
+\end{figure}
+\begin{figure}[tbh]
+\centering
+	\includegraphics[clip,scale=0.55]{Figs/imgs_zoom.eps}
 	\caption{計測波形を用いて行った3種類のRTMイメージングの結果
 	(スリット周辺を拡大して表示)}
 	\label{fig:imgs_zoom}
+	\vspace{-5mm}
 \end{figure}
 一方，スリットの下側は画像に現れず，これはスリット下端側からの
 散乱波が元々観測波形に含まれていないことが原因と考えられる．
