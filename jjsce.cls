@@ -9,7 +9,7 @@
  \NeedsTeXFormat{LaTeX2e}
 \fi
 \ProvidesClass{jjsce}
-  [2022/01/31 v1.0-RC01 for 土木学会論文集]
+  [2022/05/30 v1.0 for 土木学会論文集]
 
 \def\jsce@warning{\ClassWarningNoLine{jjsce}}
 \def\jsceline@warning{\ClassWarning{jjsce}}
@@ -220,7 +220,7 @@
   %  \parindent10\p@
   %\fi
   \ltj@setpar@global
-  \ltjsetkanjiskip\z@ plus .1\zw minus .01\zw
+  \ltjsetkanjiskip\z@ plus .1\zw minus .025\zw
   \@tempskipa=\ltjgetparameter{xkanjiskip}
   \ifdim\@tempskipa>\z@
    %\if@slide
@@ -468,7 +468,7 @@
  \def\tmp@an{#1}%
  \ifx\tmp@an\@empty
   \jsce@warning{Author's name is not specified}%
-  \get@al{#2}%
+  \get@al{#3}%
  \else
   \@tempcnta\z@
   \advance \@authorcnt \@ne
@@ -638,16 +638,20 @@
  %\advance \chk@alcnt \@ne
  \@ifundefined{al@#1}%
   {\expandafter\xdef\csname al@#1\endcsname{\the\@alcnt}}{%
-   \jsce@warning{Check the "#1" label, it is already asigned}%
+   \jsce@warning{Check the "#1" label, it is already assigned}%
   }%
+ \def\tmp@affiliate{#3}%
  \protected@xdef\@affiliate{\@affiliate
   \protect\save@affi{$^{\csname al@#1\endcsname}$\kern\z@}%
   #2\\ 
-  E-mail: \protect\jsce@email{#3}%
-  \ifnum\total@nr=\@ne\else
-   \if@jsce@Caffi\ (Corresponding Author)\fi
+  \ifx\tmp@affiliate\@empty\else
+   E-mail: \protect\jsce@email{#3}%
+   \ifnum\total@nr=\@ne\else
+    \if@jsce@Caffi\ (Corresponding Author)\fi
+   \fi
+   \\
   \fi
-  \\}%
+  }%
  \@jsce@Caffifalse
 }
 \def\@affiliate{}
@@ -684,7 +688,7 @@
   %\hskip10\p@
   \itshape
   %{\bfseries Keywords:\ }\ignorespaces
-  \@hangfrom{\hskip10\p@\bfseries Keywords:\ }\ignorespaces
+  \@hangfrom{\hskip10\p@\bfseries Key Words:\ }\ignorespaces
 }
 \def\endkeyword{\end{minipage}\egroup}
 
@@ -1930,9 +1934,10 @@
  \if@english\else
   \if@noflushend\else
    \zsaveposy{jsce@lastpage@posy}%
+   %% this adds aux \zref@newlabel{jsce@lastpage@posy}{\posy{33744135}}
+   %%  --> \Z@R@jsce@lastpage@posy
    \newbox\box@jsceEtitle
    \setbox\box@jsceEtitle\hbox{\@makeEtitle}%
-   %%
    \newdimen\@dimY
    \setbox0\hbox{\expandafter\hskip\zposy{jsce@lastpage@posy}sp}%
    \@dimY=\wd0
